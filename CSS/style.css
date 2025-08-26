@@ -1,0 +1,475 @@
+/* Paleta costera */
+:root {
+  --color-mar: #2C6E7E;
+  --color-arena: #F5F1E7;
+  --color-coral: #E28C7E;
+  --color-texto: #4A4A4A;
+}
+
+/* Reset básico */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-arena);
+  color: var(--color-texto);
+  margin: 0;
+  padding: 0;
+}
+
+/* Logo animado */
+.logo-container {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.logo-symbol path {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: draw 2s ease forwards;
+}
+
+.logo-text {
+  font-size: 2.5rem;
+  color: var(--color-mar);
+  font-family: 'Segoe Script', cursive;
+  opacity: 0;
+  animation: fadeInText 2s ease 2s forwards;
+}
+
+.logo-slogan {
+  font-size: 1.2rem;
+  color: var(--color-coral);
+  opacity: 0;
+  animation: fadeInText 2s ease 3s forwards;
+}
+
+/* Animaciones */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Ícono flotante de WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 60px;
+}
+
+/* Footer */
+
+
+footer .social-links a {
+  color: var(--color-mar);
+  margin: 0 8px;
+  text-decoration: none;
+}
+
+.footer-custom {
+  background-color: #eaf4fb;
+  color: #17628d;
+  border-top: 1px solid #cce0ee;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05); /* sombra superior */
+}
+
+
+.footer-custom {
+  background-color: #eaf4fb; /* azul muy suave */
+  color: #17628d; /* azul principal */
+  border-top: 1px solid #cce0ee;
+}
+
+.footer-custom a {
+  color: #17628d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-custom a:hover {
+  color: #3b85b1;
+}
+
+.footer-custom i {
+  margin-right: 6px;
+}
+
+@media (min-width: 992px) {
+  .footer-fixed-lg {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+}
+
+
+.slogan {
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #e2bf7e; /* tono arena */
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+  font-style: italic;
+ 
+}
+
+/* Estilos personalizados para íconos */
+i.bi-geo-alt-fill {
+  color: #2C6E7E;
+  font-size: 1.2rem;
+}
+
+.calendario {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.calendario.visible {
+  max-height: 500px; /* ajustá según el alto del iframe */
+  opacity: 1;
+}
+
+#contadorBrisa {
+  font-weight:normal;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.contador-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.flatpickr-calendar {
+  font-family: 'Nunito', sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.flatpickr-day {
+  font-size: 0.95em;
+  padding: 0.5em;
+  border-radius: 6px;
+}
+
+.flatpickr-day.today {
+  background-color: #f8f1e4;
+  border: 1px solid #198754;
+}
+
+.flatpickr-day.selected {
+  background-color: #198754;
+  color: white;
+}
+
+.flatpickr-day.flatpickr-disabled {
+  background-color: #f0f0f0 !important;
+  color: #888 !important;
+  text-decoration: line-through !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+}
+
+@media (max-width: 768px) {
+  .flatpickr-calendar {
+    width: 100% !important;
+  }
+}
+
+/*Carrousel*/
+
+.carousel {
+  position: relative;
+  min-height: 300px
+}
+
+.carousel-item {
+  height: 400px; /* Altura fija para todas las imágenes */
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.carousel-item img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 250px; /* o incluso 200px si querés más compacto */
+  }
+
+  .carousel-item img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    display: inline-block;
+  }
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(18, 98, 145, 0.2); /* verde con transparencia */
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(18, 98, 145, 0.5);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 60% 60%;
+}
+
+
+/* Fichas de propiedades */
+.card {
+  position: relative;
+  background-color: #ffffff; /* Fondo blanco real */
+  border: 1px solid #dee2e6;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  padding-left: 1rem;
+  transition: transform 0.2s ease;
+}
+
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+
+
+/* Título destacado 
+.card-title {
+  font-size: 1.5rem;
+  color: #198754;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  background-color: #e9f7ef;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+} */
+
+/* Separación entre fichas */
+.card + .card {
+  margin-top: 5rem;
+}
+
+/* Extras ocultos con transición */
+#extras-Brisa,
+#extras-Coral,
+#extras-Belen,
+#extras-Benteveo {
+  transition: all 0.5s ease;
+}
+
+/* Botón de consulta */
+.btn-success:active {
+  background-color: #17628d;
+}
+
+.btn-success {
+  background-color: #17628d;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #3b85b1;
+}
+
+
+.btn-success:active,
+.btn-success:focus {
+  background-color: #17628d !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #17628d;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card {
+    height: 100%;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeUp 0.6s ease forwards;
+  opacity: 0;
+}
+.carousel-item img {
+  transition: transform 0.5s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.03);
+}
+.btn-success:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/*Header*/
+.header-custom {
+  background-color: #eaf4fb; /* azul suave */
+  color: #17628d;            /* azul principal */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* sombra inferior */
+}
+
+.header-custom .slogan {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #e2bf7e;
+  margin-top: 0.5rem;
+}
+
+.header-custom h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #17628d;
+  margin-top: 1rem;
+}
+.header-custom {
+  animation: fadeInDown 0.6s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*Body*/
+body {
+
+  background-color: #fafafa; /* azul pálido */
+}
+
+
+.card-body h5 {
+  margin-top: 0.25rem;
+}
+.extras-comunes {
+  font-size: 0.95rem;
+  padding-left: 0;
+}
+
+.extras-comunes li {
+  padding: 4px 0;
+  border-bottom: 1px dashed #ddd;
+}
+
+.extras-comunes i {
+  color: #17628d;
+}
+
+.icono-comun {
+  color: #17628d;
+  font-size: 1.1rem;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.carousel-inner {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+
+.flatpickr-day {
+  position: relative;
+}
+
+
+.precio-dia {
+  position: absolute;
+  top: -6px; /* más arriba que antes */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  color: #17628d;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 2;
+}

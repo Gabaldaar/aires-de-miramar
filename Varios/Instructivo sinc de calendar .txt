@@ -1,0 +1,34 @@
+Sí, es posible sincronizar tu calendario de Google con una página web, así como con plataformas de reservas como Airbnb y Booking.com, utilizando el formato estándar iCal (también conocido como ICS). Este método es muy útil para evitar reservas duplicadas y mantener la disponibilidad de tus propiedades actualizada en todas las plataformas.
+
+Sincronización con tu propia página web
+Para mostrar un calendario de Google en tu propio sitio web, puedes incrustarlo directamente usando un código HTML.
+
+Haz público tu calendario: En la configuración de Google Calendar, selecciona el calendario que deseas compartir y ve a la sección "Permisos de acceso". Marca la opción para que sea "Disponible públicamente".
+
+Obtén el código para incrustar: En la misma configuración, busca la sección "Integrar calendario" para copiar el código HTML de tipo iframe.
+
+Personaliza el calendario: Google te permite personalizar el aspecto del calendario (color, vista, etc.) antes de copiar el código.
+
+Pega el código en tu sitio web: Inserta el código iframe en la sección HTML de tu página web donde quieras que aparezca el calendario.
+
+Sincronización con Airbnb y Booking.com
+La sincronización con estas plataformas se realiza a través de la importación y exportación de calendarios en formato iCal. Es un proceso bidireccional.
+
+Para sincronizar un calendario de Airbnb con Google Calendar:
+Exporta el calendario de Airbnb: En la configuración de tu anuncio en Airbnb, busca la sección de "Disponibilidad" o "Calendario" y selecciona la opción para exportar el calendario. Esto te proporcionará un enlace con terminación .ics.
+
+Importa en Google Calendar: Abre Google Calendar, ve a "Otros calendarios" y selecciona "De URL". Pega el enlace de Airbnb y haz clic en "Añadir calendario". Ahora verás las reservas de Airbnb en tu calendario de Google.
+
+Para sincronizar un calendario de Booking.com con Google Calendar:
+Exporta el calendario de Booking.com: De forma similar, en la extranet de Booking.com, encuentra la opción para exportar el calendario en formato iCal y copia el enlace.
+
+Importa en Google Calendar: Pega el enlace en la opción "De URL" de Google Calendar para ver las reservas de Booking.com.
+
+Consideraciones importantes:
+Actualizaciones: La sincronización iCal puede tardar unas horas en actualizarse (normalmente entre 2 y 4 horas), lo que podría generar un pequeño riesgo de reservas dobles.
+
+Sincronización bidireccional: Para que funcione correctamente, debes importar el calendario de Google en Airbnb y Booking.com, además de exportar el de las plataformas a Google. Esto asegura que los eventos que crees en Google Calendar (como bloqueos de fechas personales) también se reflejen en las plataformas de reserva.
+
+Este video te muestra cómo sincronizar el calendario del plugin YITH de WooCommerce con Google Calendar, un proceso similar al que se usa en otros servicios. Sincronizar el calendario del plugin con Google Calendar
+
+Sincronizar el calendario del plugin con Google Calendar- YITH Booking & Appointment for 
