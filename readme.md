@@ -1,4 +1,19 @@
-Este proyecto es para desarrollar una página de oferta de propiedades en alquiler temporario.
-En la primera etapa sólo será para publicar las propiedades y consultar disponibilidad y precios.
-La idea es linkear con calendario de Google para mostrar fechas disponibles y valores según rabgo de fechas.
-Tamvién calculará el total a abonar considerando descuentos por cantidad de noches
+# Aires de Miramar
+
+Sitio web para consultas de disponibilidad y precios de propiedades familiares en Miramar, Buenos Aires.
+
+## Características
+
+- Calendario interactivo con precios diarios
+- Cálculo automático de estadía y descuentos
+- Formulario de contacto con validación y envío por Formspree
+- Diseño adaptable y cálido
+
+## Enlace público
+
+👉 [Ver sitio en GitHub Pages](https://gabaldaar.github.io/aires-de-miramar/)
+
+## Contacto
+
+Gabriel Aldazabal  
+[Instagram](https://instagram.com/alquileres.miramar) · [WhatsApp](https://wa.me/5491159923813)
