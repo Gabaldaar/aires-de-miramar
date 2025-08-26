@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const propiedad = params.get("propiedad");
   const tipo = params.get("tipo") || "Departamento";
-const esEmailValido = email => {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-};
 
+  const esEmailValido = email => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
 
   if (!propiedad) return;
 
@@ -104,12 +104,15 @@ const esEmailValido = email => {
 
       // Botón "Limpiar"
       document.getElementById("btn-limpiar").addEventListener("click", () => {
-        document.getElementById("nombre").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("telefono").value = "";
+        ["nombre", "email", "telefono", "comentarios"].forEach(id => {
+          document.getElementById(id).value = "";
+        });
         document.getElementById("rango")._flatpickr.clear();
         document.getElementById("huespedes").value = "";
         totalContainer.textContent = "";
+        ["nombre", "email", "rango", "huespedes"].forEach(id => {
+          document.getElementById("error-" + id).textContent = "";
+        });
       });
 
       // Botón "Volver"
@@ -122,66 +125,92 @@ const esEmailValido = email => {
         const nombre = document.getElementById("nombre").value.trim();
         const email = document.getElementById("email").value.trim();
         const telefono = document.getElementById("telefono").value.trim();
+        const comentarios = document.getElementById("comentarios").value.trim();
         const rango = input.value;
         const huespedes = document.getElementById("huespedes").value;
         const total = totalContainer.textContent;
 
+        // Limpiar errores previos
+        ["nombre", "email", "rango", "huespedes"].forEach(id => {
+          document.getElementById("error-" + id).textContent = "";
+        });
 
-        if (!nombre || !email) {
-          alert("Completá tu nombre y correo electrónico para enviar la consulta.");
-          return;
+        let hayError = false;
+
+        if (!nombre) {
+          document.getElementById("error-nombre").textContent = "Este campo es obligatorio.";
+          hayError = true;
         }
 
-        if (!esEmailValido(email)) {
-          alert("El correo electrónico ingresado no es válido.");
-          return;
+        if (!email) {
+          document.getElementById("error-email").textContent = "Este campo es obligatorio.";
+          hayError = true;
+        } else if (!esEmailValido(email)) {
+          document.getElementById("error-email").textContent = "El formato del correo no es válido.";
+          hayError = true;
         }
 
-        if (!rango || !huespedes) {
-          alert("Completá las fechas y la cantidad de huéspedes.");
-          return;
+        if (!rango) {
+          document.getElementById("error-rango").textContent = "Seleccioná las fechas.";
+          hayError = true;
         }
 
-
-        if (!nombre || !email) {
-          alert("Completá tu nombre y correo electrónico para enviar la consulta.");
-          return;
+        if (!huespedes) {
+          document.getElementById("error-huespedes").textContent = "Indicá la cantidad de huéspedes.";
+          hayError = true;
         }
 
-        if (!rango || !huespedes) {
-          alert("Completá las fechas y la cantidad de huéspedes.");
-          return;
-        }
+        if (hayError) return;
 
-        const mensaje = `
-Propiedad: ${tipo} ${propiedad}
-Nombre: ${nombre}
-Email: ${email}
-Teléfono: ${telefono || "No informado"}
-Fechas: ${rango}
-Huéspedes: ${huespedes}
-${total}
-        `;
+        const ahora = new Date();
+        const fechaHora = ahora.toLocaleString("es-AR", {
+          dateStyle: "full",
+          timeStyle: "short"
+        });
 
-        fetch("https://formspree.io/f/xyzdyzjk", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: mensaje, _replyto: email })
-        })
-          .then(res => {
-            if (res.ok) {
-             document.querySelector("section.container").innerHTML = `
-              <div class="alert alert-success text-center mt-5">
-                <img src="assets/logo.png" alt="Aires de Miramar" style="max-width: 180px; margin-bottom: 1rem;">
-                <h4 class="mb-3">¡Consulta enviada!</h4>
-                <p>Gracias por contactarte. Te responderemos pronto con la disponibilidad y precios.</p>
-                <a href="index.html" class="btn btn-primary mt-3">Volver al inicio</a>
-              </div>
-            `;
-             } else {
-              alert("Hubo un problema al enviar la consulta. Intentá nuevamente.");
-            }
-          });
+// Enviar a Google Apps Script
+console.log("Enviando datos al Web App...");
+
+fetch("https://script.google.com/macros/s/AKfycbx-F-8-c1cjp6e0xbKFaYLYdPnK8oAXqZC98rYIs5XfCejF-xMEc5pYFDe9KwJLvG2GEw/exec", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    propiedad: `${tipo} ${propiedad}`,
+    nombre,
+    email,
+    telefono,
+    rango,
+    huespedes,
+    total,
+    comentarios,
+    fechaHora
+  })
+})
+.then(res => {
+  console.log("Respuesta del servidor:", res);
+  return res.text(); // leer el cuerpo como texto plano
+})
+.then(texto => {
+  console.log("Texto recibido:", texto);
+  if (texto.includes("OK")) {
+    document.querySelector("section.container").innerHTML = `
+      <div class="alert alert-success text-center mt-5">
+        <img src="assets/logo.png" alt="Aires de Miramar" style="max-width: 180px; margin-bottom: 1rem;">
+        <h4 class="mb-3">¡Consulta enviada!</h4>
+        <p>Gracias por contactarte. Te responderemos pronto con la disponibilidad y precios.</p>
+        <a href="index.html" class="btn btn-primary mt-3">Volver al inicio</a>
+      </div>
+    `;
+  } else {
+    console.warn("Respuesta inesperada:", texto);
+    alert("El servidor respondió, pero no se pudo confirmar el envío.");
+  }
+})
+.catch(error => {
+  console.error("Error al enviar la consulta:", error);
+  alert("Hubo un problema al conectar con el servidor.");
+});
+
       });
     });
 });
