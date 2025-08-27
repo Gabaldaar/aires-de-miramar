@@ -173,7 +173,9 @@ console.log("Enviando datos al Web App...");
 
 fetch("https://script.google.com/macros/s/AKfycbx-F-8-c1cjp6e0xbKFaYLYdPnK8oAXqZC98rYIs5XfCejF-xMEc5pYFDe9KwJLvG2GEw/exec", {
   method: "POST",
-  headers: { "Content-Type": "application/json" },
+  headers: {
+    "Content-Type": "text/plain;charset=utf-8"  // ← esto evita el preflight
+  },
   body: JSON.stringify({
     propiedad: `${tipo} ${propiedad}`,
     nombre,
@@ -186,10 +188,7 @@ fetch("https://script.google.com/macros/s/AKfycbx-F-8-c1cjp6e0xbKFaYLYdPnK8oAXqZ
     fechaHora
   })
 })
-.then(res => {
-  console.log("Respuesta del servidor:", res);
-  return res.text(); // leer el cuerpo como texto plano
-})
+.then(res => res.text())
 .then(texto => {
   console.log("Texto recibido:", texto);
   if (texto.includes("OK")) {
@@ -202,7 +201,6 @@ fetch("https://script.google.com/macros/s/AKfycbx-F-8-c1cjp6e0xbKFaYLYdPnK8oAXqZ
       </div>
     `;
   } else {
-    console.warn("Respuesta inesperada:", texto);
     alert("El servidor respondió, pero no se pudo confirmar el envío.");
   }
 })
@@ -210,6 +208,7 @@ fetch("https://script.google.com/macros/s/AKfycbx-F-8-c1cjp6e0xbKFaYLYdPnK8oAXqZ
   console.error("Error al enviar la consulta:", error);
   alert("Hubo un problema al conectar con el servidor.");
 });
+
 
       });
     });
