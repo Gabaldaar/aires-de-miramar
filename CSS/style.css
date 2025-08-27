@@ -490,3 +490,24 @@ body {
   text-align: center;
   width: 100%;
 }
+
+@media (max-width: 576px) {
+  .header-custom {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .logo-wrapper {
+    max-width: 220px;
+  }
+
+  .slogan {
+    font-size: 1.2rem;
+    margin-top: 0.3rem;
+  }
+
+  .header-custom h2 {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+}
