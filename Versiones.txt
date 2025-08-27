@@ -3,6 +3,8 @@ Header más chico en móviles
 Carousel sin mov autom
 Fotos cortadas.
 Calendario Google integrados
+Cantidad de huespedes por propiedad integradas
+
 V12
 Espacio con nombre casa.
 
