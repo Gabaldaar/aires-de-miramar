@@ -62,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 🗓️ IDs de calendario por propiedad
   const calendarIds = {
     //Brisa: "e50a4bf3b263eb7955e81ba93a8ca17795da344c6c59587afbcf17f36eeeb64a@group.calendar.google.com",
-    Brisa: "jnchh80bmoqq5ffubinkd4djep2ib44h@import.calendar.google.com",        // ← completá si tenés
-    Coral: "",       // ← completá si tenés
-    Belen: "",       // ← completá si tenés
-    Benteveo: ""     // ← completá si tenés
+    Brisa: "e50a4bf3b263eb7955e81ba93a8ca17795da344c6c59587afbcf17f36eeeb64a@group.calendar.google.com",        // ← completá si tenés
+    Coral: "4cd0e35e1a0b2c09f2bb18ac4caf0e613ea528dc1d899dfce6018a3b3bb1b5e4@group.calendar.google.com",       // ← completá si tenés
+    Belen: "30ed9d4620e85a878a620f239e818bde2af8dc5f1d2ddc19fbf4241c82aac070@group.calendar.google.com",       // ← completá si tenés
+    Benteveo: "d7d12046e12d045e55c41b218b0b67261b125711925bc5d8177b00752bc73d11@group.calendar.google.com"     // ← completá si tenés
   };
 
   const apiKey = "AIzaSyDUkc_gvy-Z5WrXZLXeaUkkiKGkdFN0mNg"; // ← tu clave de Google Calendar

@@ -2,7 +2,7 @@ V13
 Header más chico en móviles
 Carousel sin mov autom
 Fotos cortadas.
-
+Calendario Google integrados
 V12
 Espacio con nombre casa.
 
