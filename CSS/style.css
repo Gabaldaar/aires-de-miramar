@@ -34,13 +34,7 @@ body {
   animation: fadeInText 2s ease 2s forwards;
 }
 
-.logo-slogan {
-  font-size: 1.2rem;
-  color: var(--color-coral);
-  opacity: 0;
-  animation: fadeInText 2s ease 3s forwards;
-}
-
+x
 /* Animaciones */
 @keyframes draw {
   to {
@@ -116,17 +110,6 @@ footer .social-links a {
   }
 }
 
-
-.slogan {
-  font-family: 'Segoe UI', 'Open Sans', sans-serif;
-  font-size: 1.5rem;
-  color: #e2bf7e; /* tono arena */
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  margin-top: 0.5rem;
-  font-style: italic;
- 
-}
 
 /* Estilos personalizados para íconos */
 i.bi-geo-alt-fill {
@@ -387,11 +370,15 @@ i.bi-geo-alt-fill {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* sombra inferior */
 }
 
-.header-custom .slogan {
+.slogan {
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  color: #e2bf7e; /* tono arena */
+  width: 100%;
+  letter-spacing: 0.5px;
+  margin-top: 0.1rem;
   font-style: italic;
-  font-size: 1.1rem;
-  color: #e2bf7e;
-  margin-top: 0.5rem;
+  text-align: center;
 }
 
 .header-custom h2 {
@@ -472,4 +459,34 @@ body {
   opacity: 0.85;
   pointer-events: none;
   z-index: 2;
+}
+
+.site-header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.logo-container {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.logo-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.slogan {
+  font-size: 1.5rem;
+  color: #e2bf7e;
+  letter-spacing: 0.5px;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  font-style: italic;
+  text-align: center;
+  width: 100%;
 }
