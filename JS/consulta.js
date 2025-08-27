@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Enviar a Google Apps Script
 console.log("Enviando datos al Web App...");
 
-fetch("https://script.google.com/macros/s/AKfycbx-F-8-c1cjp6e0xbKFaYLYdPnK8oAXqZC98rYIs5XfCejF-xMEc5pYFDe9KwJLvG2GEw/exec", {
+fetch("https://script.google.com/macros/s/AKfycbxYMCC2Ltr63BrTRgLhrpC3Skfc9mTaW106yN4P09iCpmFwL03Qq2wQTQK9UjSl2md14Q/exec", {
   method: "POST",
   headers: {
     "Content-Type": "text/plain;charset=utf-8"  // ← esto evita el preflight
