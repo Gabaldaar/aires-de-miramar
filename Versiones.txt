@@ -1,16 +1,22 @@
-V12
+V13
+Header más chico en móviles
+Carousel sin mov autom
+Fotos cortadas.
 
+V12
+Espacio con nombre casa.
 
 V11 
 - Funcional con Mail HTML en consulta
+
+
+
+
 A revisar :
-Carousel sin mov autom
-Fotos cortadas. 
-Espacio con nombre casa. 
 Página de configuración de precios. 
 Planilla con solapas por casa?
 Mail de respuesta a cliente?
 Sincronizar calendarios de Google.
 Revisar textos y características de las propiedades.
-Poner periódicos disponibles.
+Poner periodos disponibles.
 

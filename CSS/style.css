@@ -100,6 +100,17 @@ footer .social-links a {
   margin-right: 6px;
 }
 
+.text-titulo {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.card {
+  margin-bottom: 10px !important;
+  padding-top:3% !important;
+}
+
+
 @media (min-width: 992px) {
   .footer-fixed-lg {
     position: fixed;
@@ -198,31 +209,6 @@ i.bi-geo-alt-fill {
   text-align: center;
 }
 
-.carousel-item img {
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .carousel-item {
-    height: 250px; /* o incluso 200px si querés más compacto */
-  }
-
-  .carousel-item img {
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    margin: 0 auto;
-    display: inline-block;
-  }
-}
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -330,11 +316,40 @@ i.bi-geo-alt-fill {
   padding: 1.5rem;
 }
 
+.carousel-inner {
+  aspect-ratio: unset;
+  overflow: hidden;
+}
+
+.carousel-item {
+  height: auto;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.carousel-item img {
+  object-fit: contain;
+  width: 100%;
+  max-height: 400px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .carousel-item img {
+    max-height: 60vh;
+  }
+}
+
+
 @media (min-width: 768px) {
   .card {
     height: 100%;
   }
 }
+
+
 
 @keyframes fadeUp {
   from {
@@ -432,16 +447,6 @@ body {
   vertical-align: middle;
 }
 
-.carousel-inner {
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-}
-
-.carousel-item img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
 
 
 .flatpickr-day {
@@ -503,11 +508,11 @@ body {
 
   .slogan {
     font-size: 1.2rem;
-    margin-top: 0.3rem;
+    margin-top: 0rem;
   }
 
   .header-custom h2 {
     font-size: 1.2rem;
-    margin-top: 0.5rem;
+    margin-top: 0.1rem;
   }
 }
