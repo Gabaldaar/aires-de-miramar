@@ -3,9 +3,57 @@ document.addEventListener('DOMContentLoaded', () => {
   const propiedad = params.get("propiedad");
   const tipo = params.get("tipo") || "Departamento";
 
-  const esEmailValido = email => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+  const esEmailValido = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const mostrarError = (id, mensaje) => {
+    const campo = document.getElementById(id);
+    const error = document.getElementById("error-" + id);
+    if (campo) campo.classList.add("is-invalid");
+    if (error) error.textContent = mensaje;
+  };
+
+  const limpiarError = id => {
+    const campo = document.getElementById(id);
+    const error = document.getElementById("error-" + id);
+    if (campo) campo.classList.remove("is-invalid");
+    if (error) error.textContent = "";
+  };
+
+  const validarCampos = ({ nombre, email, rango, huespedes }) => {
+    let valido = true;
+
+    if (!nombre.trim()) {
+      mostrarError("nombre", "Este campo es obligatorio.");
+      valido = false;
+    } else {
+      limpiarError("nombre");
+    }
+
+    if (!email.trim()) {
+      mostrarError("email", "Este campo es obligatorio.");
+      valido = false;
+    } else if (!esEmailValido(email)) {
+      mostrarError("email", "El formato del correo no es válido.");
+      valido = false;
+    } else {
+      limpiarError("email");
+    }
+
+    if (!rango.trim()) {
+      mostrarError("rango", "Seleccioná las fechas.");
+      valido = false;
+    } else {
+      limpiarError("rango");
+    }
+
+    if (!huespedes.trim()) {
+      mostrarError("huespedes", "Indicá la cantidad de huéspedes.");
+      valido = false;
+    } else {
+      limpiarError("huespedes");
+    }
+
+    return valido;
   };
 
   if (!propiedad) return;
@@ -102,25 +150,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Botón "Limpiar"
       document.getElementById("btn-limpiar").addEventListener("click", () => {
         ["nombre", "email", "telefono", "comentarios"].forEach(id => {
           document.getElementById(id).value = "";
         });
-        document.getElementById("rango")._flatpickr.clear();
+        input._flatpickr.clear();
         document.getElementById("huespedes").value = "";
         totalContainer.textContent = "";
-        ["nombre", "email", "rango", "huespedes"].forEach(id => {
-          document.getElementById("error-" + id).textContent = "";
-        });
+        ["nombre", "email", "rango", "huespedes"].forEach(limpiarError);
       });
 
-      // Botón "Volver"
       document.getElementById("btn-volver").addEventListener("click", () => {
         window.location.href = "index.html";
       });
 
-      // Botón "Enviar Consulta"
       document.getElementById("btn-enviar").addEventListener("click", () => {
         const nombre = document.getElementById("nombre").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -130,37 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const huespedes = document.getElementById("huespedes").value;
         const total = totalContainer.textContent;
 
-        // Limpiar errores previos
-        ["nombre", "email", "rango", "huespedes"].forEach(id => {
-          document.getElementById("error-" + id).textContent = "";
-        });
-
-        let hayError = false;
-
-        if (!nombre) {
-          document.getElementById("error-nombre").textContent = "Este campo es obligatorio.";
-          hayError = true;
-        }
-
-        if (!email) {
-          document.getElementById("error-email").textContent = "Este campo es obligatorio.";
-          hayError = true;
-        } else if (!esEmailValido(email)) {
-          document.getElementById("error-email").textContent = "El formato del correo no es válido.";
-          hayError = true;
-        }
-
-        if (!rango) {
-          document.getElementById("error-rango").textContent = "Seleccioná las fechas.";
-          hayError = true;
-        }
-
-        if (!huespedes) {
-          document.getElementById("error-huespedes").textContent = "Indicá la cantidad de huéspedes.";
-          hayError = true;
-        }
-
-        if (hayError) return;
+        if (!validarCampos({ nombre, email, rango, huespedes })) return;
 
         const ahora = new Date();
         const fechaHora = ahora.toLocaleString("es-AR", {
@@ -168,48 +181,58 @@ document.addEventListener('DOMContentLoaded', () => {
           timeStyle: "short"
         });
 
-// Enviar a Google Apps Script
-console.log("Enviando datos al Web App...");
+        console.log("Enviando datos al Web App...");
 
-fetch("https://script.google.com/macros/s/AKfycbxYMCC2Ltr63BrTRgLhrpC3Skfc9mTaW106yN4P09iCpmFwL03Qq2wQTQK9UjSl2md14Q/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "text/plain;charset=utf-8"  // ← esto evita el preflight
-  },
-  body: JSON.stringify({
-    propiedad: `${tipo} ${propiedad}`,
-    nombre,
-    email,
-    telefono,
-    rango,
-    huespedes,
-    total,
-    comentarios,
-    fechaHora
-  })
-})
-.then(res => res.text())
-.then(texto => {
-  console.log("Texto recibido:", texto);
-  if (texto.includes("OK")) {
-    document.querySelector("section.container").innerHTML = `
-      <div class="alert alert-success text-center mt-5">
-        <img src="assets/logo.png" alt="Aires de Miramar" style="max-width: 180px; margin-bottom: 1rem;">
-        <h4 class="mb-3">¡Consulta enviada!</h4>
-        <p>Gracias por contactarte. Te responderemos pronto con la disponibilidad y precios.</p>
-        <a href="index.html" class="btn btn-primary mt-3">Volver al inicio</a>
-      </div>
-    `;
-  } else {
-    alert("El servidor respondió, pero no se pudo confirmar el envío.");
-  }
-})
-.catch(error => {
-  console.error("Error al enviar la consulta:", error);
-  alert("Hubo un problema al conectar con el servidor.");
-});
+        fetch("https://script.google.com/macros/s/AKfycbxbc_NrRBvWuqSIqU1xSTHtwJCUGDFIzDswoPTjG_WfIl3GZv2L336Do2tc4ZaKHAetuw/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({
+            propiedad: `${tipo} ${propiedad}`,
+            nombre,
+            email,
+            telefono,
+            rango,
+            huespedes,
+            total,
+            comentarios,
+            fechaHora
+          })
+        })
+        .then(res => res.text())
+        .then(seguimiento => {
+          if (seguimiento.startsWith("CM-")) {
+            // Mostrar mensaje de éxito con el número
+          document.querySelector("section.container").innerHTML = `
+            <div class="alert alert-success text-center mt-5">
+              <img src="assets/logo.png" alt="Aires de Miramar" style="max-width: 150px; margin-bottom: 1rem;">
+              <h4 class="mb-3">¡Consulta enviada!</h4>
+              <p>Gracias por contactarte. Te responderemos pronto con la disponibilidad y precios.</p>
+              
+              <div class="mt-4">
+                <p><strong>Número de seguimiento:</strong></p>
+                <p id="codigo-seguimiento" class="text-primary fw-bold fs-5">${seguimiento}</p>
+                <button class="btn btn-outline-secondary btn-sm mt-2" onclick="navigator.clipboard.writeText('${seguimiento}')">
+                  <i class="bi bi-clipboard"></i> Copiar código
+                </button>
+              </div>
 
+              <div class="mt-4">
+                <a href="index.html" class="btn btn-primary">Volver al inicio</a>
+              </div>
+            </div>
+          `;
 
+          } else {
+            alert("El servidor respondió, pero no se pudo confirmar el envío.");
+          }
+        })
+
+        .catch(error => {
+          console.error("Error al enviar la consulta:", error);
+          alert("Hubo un problema al conectar con el servidor.");
+        });
       });
     });
 });
