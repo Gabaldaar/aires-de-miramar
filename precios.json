@@ -6,6 +6,10 @@
       { "desde": "2025-09-01", "hasta": "2025-09-30", "precio": 65 }
     ],
     "minimoNoches": 3,
+    "minimosPorRango": [
+      { "desde": "2025-12-01", "hasta": "2026-03-30", "minimo": 15 },
+      { "desde": "2025-04-01", "hasta": "2025-11-30", "minimo": 3 }
+    ],
     "descuentos": [
       { "noches": 6, "porcentaje": 10 },
       { "noches": 30, "porcentaje": 25 }
@@ -17,6 +21,10 @@
       { "desde": "2025-07-15", "hasta": "2025-08-15", "precio": 58 }
     ],
     "minimoNoches": 2,
+    "minimosPorRango": [
+      { "desde": "2025-12-01", "hasta": "2026-03-30", "minimo": 15 },
+      { "desde": "2025-04-01", "hasta": "2025-11-30", "minimo": 3 }
+    ],
     "descuentos": [
       { "noches": 5, "porcentaje": 8 },
       { "noches": 20, "porcentaje": 20 }
@@ -29,6 +37,10 @@
       { "desde": "2025-10-12", "hasta": "2025-10-25", "precio": 150 }
     ],
     "minimoNoches": 2,
+    "minimosPorRango": [
+      { "desde": "2025-12-01", "hasta": "2026-03-30", "minimo": 15 },
+      { "desde": "2025-04-01", "hasta": "2025-11-30", "minimo": 3 }
+    ],
     "descuentos": [
       { "noches": 7, "porcentaje": 4 },
       { "noches": 30, "porcentaje": 27 }
@@ -40,6 +52,10 @@
       { "desde": "2025-12-20", "hasta": "2026-01-10", "precio": 80 }
     ],
     "minimoNoches": 4,
+    "minimosPorRango": [
+      { "desde": "2025-12-01", "hasta": "2026-03-30", "minimo": 15 },
+      { "desde": "2025-04-01", "hasta": "2025-11-30", "minimo": 3 }
+    ],
     "descuentos": [
       { "noches": 10, "porcentaje": 15 },
       { "noches": 30, "porcentaje": 35 }

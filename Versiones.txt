@@ -1,7 +1,12 @@
+V15
+Rango de estadías minimas por fecha
+Se muestran en las condiciones
+
 V14
 Mostrar más en 2 columnas
 Revisar textos y características de las propiedades.
 Poner periodos disponibles
+Cambio color maps
 
 V13
 Header más chico en móviles

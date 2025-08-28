@@ -103,8 +103,33 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
         return base;
       };
 
-      const condiciones = document.getElementById("condiciones");
-      condiciones.innerHTML = `<strong>Estadía mínima:</strong> ${minimo} noche${minimo > 1 ? 's' : ''}<br>`;
+        const condiciones = document.getElementById("condiciones");
+        let textoMinimos = `<strong>Estadía mínima:</strong><ul>`;
+
+        // Mostrar rangos especiales si existen
+        if (info.minimosPorRango && info.minimosPorRango.length) {
+          const formatearFecha = iso => {
+            const f = new Date(iso);
+            const dia = String(f.getDate()).padStart(2, '0');
+            const mes = String(f.getMonth() + 1).padStart(2, '0');
+            const anio = f.getFullYear();
+            return `${dia}-${mes}-${anio}`;
+          };
+
+          info.minimosPorRango.forEach(r => {
+            textoMinimos += `<li>${r.minimo} noche${r.minimo > 1 ? 's' : ''} entre ${formatearFecha(r.desde)} y ${formatearFecha(r.hasta)}</li>`;
+          });
+
+        }
+
+        // Mostrar mínimo estándar como "fuera de temporada"
+        textoMinimos += `<li>${info.minimoNoches || 1} noche${(info.minimoNoches || 1) > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
+        textoMinimos += `</ul>`;
+
+        condiciones.innerHTML = textoMinimos;
+
+
+
       if (descuentos.length) {
         condiciones.innerHTML += `<strong>Descuentos:</strong><ul>`;
         descuentos.forEach(d => {
@@ -131,8 +156,23 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
           actual.setDate(actual.getDate() + 1);
         }
 
-        if (noches < minimo) {
-          totalContainer.innerHTML = `<span class="text-danger">La estadía mínima es de ${minimo} noche${minimo > 1 ? 's' : ''}.</span>`;
+          let minimoFinal = minimo;
+
+          if (info.minimosPorRango && fechas.length === 2) {
+            const inicio = new Date(fechas[0]);
+            for (const r of info.minimosPorRango) {
+              const desde = new Date(r.desde);
+              const hasta = new Date(r.hasta);
+              if (inicio >= desde && inicio <= hasta) {
+                minimoFinal = r.minimo;
+                break;
+              }
+            }
+          }
+
+        if (noches < minimoFinal) {
+          totalContainer.innerHTML = `<span class="text-danger">La estadía mínima es de ${minimoFinal} noche${minimoFinal > 1 ? 's' : ''}.</span>`;
+
           return;
         }
 

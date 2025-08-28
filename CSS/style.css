@@ -123,10 +123,10 @@ footer .social-links a {
 
 
 /* Estilos personalizados para íconos */
-i.bi-geo-alt-fill {
-  color: #2C6E7E;
-  font-size: 1.2rem;
+.icono-maps {
+  color: #17628d; /* o el color que prefieras */
 }
+
 
 .calendario {
   overflow: hidden;
@@ -435,6 +435,9 @@ body {
 
 .extras-comunes i {
   color: #17628d;
+}
+.bi bi-geo-alt-fill {
+  color: #8d1727;
 }
 
 .extras-comunes {
