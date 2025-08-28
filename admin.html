@@ -11,81 +11,19 @@
 </head>
 <body class="container py-4">
   <h2>Acceso de administrador</h2>
-  <input type="password" id="clave" class="form-control w-50" placeholder="Clave de acceso">
-  <button class="btn btn-primary mt-2" onclick="validarAcceso()">Entrar</button>
+<script>
+  const esAdmin = true; // Cambiá esto según tu lógica de acceso
 
-  <div id="panel">
-    <h3>Editar configuración</h3>
-    <select id="propiedad" class="form-select w-50 mb-3">
-      <option value="Brisa">Brisa</option>
-      <option value="Coral">Coral</option>
-      <option value="Belen">Belen</option>
-      <option value="Benteveo">Benteveo</option>
-    </select>
+  if (esAdmin) {
+    const boton = document.createElement("button");
+    boton.textContent = "Ir al Panel de Administración";
+    boton.className = "btn btn-outline-primary mt-3";
+    boton.onclick = () => {
+      window.open("https://script.google.com/macros/s/AKfycbxD9Y3yqMYdAKr-m5QmsB8l4GDFgb0ReGvt5gcJkaMN-2mojauf3P0tP0KBTS6ytsyalg/exec", "_blank");
+    };
+    document.body.appendChild(boton);
+  }
+</script>
 
-    <div class="grupo">
-      <label>Precio base:</label>
-      <input type="number" id="base" class="form-control">
-    </div>
-
-    <div class="grupo">
-      <label>Rangos de precios:</label>
-      <textarea id="rangos" class="form-control" rows="4" placeholder='Ej: [{"desde":"2025-07-01","hasta":"2025-07-30","precio":60}]'></textarea>
-    </div>
-
-    <div class="grupo">
-      <label>Mínimos por rango:</label>
-      <textarea id="minimos" class="form-control" rows="4" placeholder='Ej: [{"desde":"2025-12-01","hasta":"2026-03-30","minimo":15}]'></textarea>
-    </div>
-
-    <div class="grupo">
-      <label>Descuentos:</label>
-      <textarea id="descuentos" class="form-control" rows="4" placeholder='Ej: [{"noches":6,"porcentaje":10}]'></textarea>
-    </div>
-
-    <button class="btn btn-success" onclick="guardarCambios()">Guardar cambios</button>
-    <div id="resultado" class="mt-3"></div>
-  </div>
-
-  <script>
-    function validarAcceso() {
-      const clave = document.getElementById("clave").value;
-      if (clave === "admin123") {
-        document.getElementById("panel").style.display = "block";
-      } else {
-        alert("Clave incorrecta");
-      }
-    }
-
-    function guardarCambios() {
-      const propiedad = document.getElementById("propiedad").value;
-      const base = parseFloat(document.getElementById("base").value);
-      const rangos = JSON.parse(document.getElementById("rangos").value || "[]");
-      const minimos = JSON.parse(document.getElementById("minimos").value || "[]");
-      const descuentos = JSON.parse(document.getElementById("descuentos").value || "[]");
-
-      const datos = {
-        propiedad,
-        base,
-        rangos,
-        minimosPorRango: minimos,
-        descuentos
-      };
-
-      fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(datos)
-      })
-      .then(res => res.text())
-      .then(msg => {
-        document.getElementById("resultado").innerHTML = `<div class="alert alert-success">${msg}</div>`;
-      })
-      .catch(err => {
-        document.getElementById("resultado").innerHTML = `<div class="alert alert-danger">Error al guardar</div>`;
-        console.error(err);
-      });
-    }
-  </script>
 </body>
 </html>

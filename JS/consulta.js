@@ -80,7 +80,7 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
     });
   };
 
-  fetch("precios.json")
+  fetch("https://script.google.com/macros/s/AKfycbzpuEP62QgEHg4rL-MYUFkXE2gN0zKI6zs9ZjFeRkuAi6-IqucbdSXOE-jlD3n0qlji2A/exec")
     .then(res => res.json())
     .then(precios => {
       const info = precios[propiedad];
