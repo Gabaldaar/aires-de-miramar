@@ -1,3 +1,6 @@
+V14
+Mostrar más en 2 columnas
+
 V13
 Header más chico en móviles
 Carousel sin mov autom
@@ -19,7 +22,6 @@ A revisar :
 Página de configuración de precios. 
 Planilla con solapas por casa?
 Mail de respuesta a cliente?
-Sincronizar calendarios de Google.
 Revisar textos y características de las propiedades.
 Poner periodos disponibles.
 
