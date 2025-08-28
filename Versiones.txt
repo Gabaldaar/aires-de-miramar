@@ -1,5 +1,7 @@
 V14
 Mostrar más en 2 columnas
+Revisar textos y características de las propiedades.
+Poner periodos disponibles
 
 V13
 Header más chico en móviles
@@ -22,6 +24,5 @@ A revisar :
 Página de configuración de precios. 
 Planilla con solapas por casa?
 Mail de respuesta a cliente?
-Revisar textos y características de las propiedades.
-Poner periodos disponibles.
+.
 
