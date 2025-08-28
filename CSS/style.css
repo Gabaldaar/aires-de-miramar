@@ -426,10 +426,7 @@ body {
 .card-body h5 {
   margin-top: 0.25rem;
 }
-.extras-comunes {
-  font-size: 0.95rem;
-  padding-left: 0;
-}
+
 
 .extras-comunes li {
   padding: 4px 0;
@@ -439,6 +436,20 @@ body {
 .extras-comunes i {
   color: #17628d;
 }
+
+.extras-comunes {
+  font-size: 0.95rem;
+  padding-left: 0;
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+@media (max-width: 576px) {
+  .extras-comunes {
+    column-count: 1;
+  }
+}
+
 
 .icono-comun {
   color: #17628d;

@@ -4,6 +4,7 @@ Carousel sin mov autom
 Fotos cortadas.
 Calendario Google integrados
 Cantidad de huespedes por propiedad integradas
+Actualizacion de API de Google para que ande en Git
 
 V12
 Espacio con nombre casa.
