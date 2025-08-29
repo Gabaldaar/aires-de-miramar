@@ -241,8 +241,8 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
     dateStyle: "full",
     timeStyle: "short"
   });
-
-  fetch("https://script.google.com/macros/s/AKfycbxbc_NrRBvWuqSIqU1xSTHtwJCUGDFIzDswoPTjG_WfIl3GZv2L336Do2tc4ZaKHAetuw/exec", {
+// este es el link del mail en Google App script
+  fetch("https://script.google.com/macros/s/AKfycbwE5aGFYIV0h2zheDSGzWqd4CZGB0gATpnuBgA4-rDRR8l96rLtg3-bW4oJ6eTe7XG6nQ/exec", {
     method: "POST",
     headers: {
       "Content-Type": "text/plain;charset=utf-8"
