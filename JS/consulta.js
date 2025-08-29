@@ -80,6 +80,7 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
     });
   };
 
+  
   fetch("https://script.google.com/macros/s/AKfycbzpuEP62QgEHg4rL-MYUFkXE2gN0zKI6zs9ZjFeRkuAi6-IqucbdSXOE-jlD3n0qlji2A/exec")
     .then(res => res.json())
     .then(precios => {
@@ -242,7 +243,7 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
     timeStyle: "short"
   });
 // este es el link del mail en Google App script
-  fetch("https://script.google.com/macros/s/AKfycbw5XgmjRwfqBBQZRLlox5Nr6BVubfxYy4D4eBb_lpsAGN6n0OX8bCn3GjfNCbDoROwotQ/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbydWYJGj60EggNpLKvRelwzyd9YbHLgCrrfZT-TKl2zfTUX85TqHCNmhx1Q3rvjxrYQog/exec", {
     method: "POST",
     headers: {
       "Content-Type": "text/plain;charset=utf-8"
