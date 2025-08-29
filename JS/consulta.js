@@ -242,7 +242,7 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
     timeStyle: "short"
   });
 // este es el link del mail en Google App script
-  fetch("https://script.google.com/macros/s/AKfycbyOuDjMu4_X_xVVIPHo5lQfX3Y87aX5cNugTYnFjelN2sBZVQWf_zpAzHoZ_wND7Dm42g/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbw5XgmjRwfqBBQZRLlox5Nr6BVubfxYy4D4eBb_lpsAGN6n0OX8bCn3GjfNCbDoROwotQ/exec", {
     method: "POST",
     headers: {
       "Content-Type": "text/plain;charset=utf-8"
