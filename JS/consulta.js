@@ -287,7 +287,18 @@ const validarCamposObligatoriosEnTiempoReal = () => {
     }
   });
 
-  btnEnviar.disabled = !todosCompletos;
+  if (todosCompletos) {
+  btnEnviar.disabled = false;
+  btnEnviar.textContent = "Listo para enviar";
+  btnEnviar.classList.remove("btn-outline-primary");
+  btnEnviar.classList.add("btn-success");
+} else {
+  btnEnviar.disabled = true;
+  btnEnviar.textContent = "Enviar Consulta";
+  btnEnviar.classList.remove("btn-success");
+  btnEnviar.classList.add("btn-outline-primary");
+}
+
 };
 
 
