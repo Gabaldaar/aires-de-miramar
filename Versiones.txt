@@ -1,3 +1,11 @@
+V19
+Consulta con validacion de campos en tiempo real
+
+V18
+Correciones en envío de mails
+Notificaciones
+Esperas para carga de datos
+
 V15
 Rango de estadías minimas por fecha
 Se muestran en las condiciones

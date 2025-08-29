@@ -10,6 +10,28 @@ const maxHuespedes = {
   Brisa: 3
 };
 
+const form = document.getElementById("form-consulta");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const nombre = document.getElementById("nombre").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const rango = document.getElementById("rango").value.trim();
+  const huespedes = document.getElementById("huespedes").value.trim();
+
+  const valido = validarCampos({ nombre, email, rango, huespedes });
+
+  if (!valido) {
+    // Si hay errores, no hacemos nada más
+    return;
+  }
+
+  // Si todo está bien, simulamos el clic en el botón
+  document.getElementById("btn-enviar").click();
+});
+
+
 const huespedesSelect = document.getElementById("huespedes");
 if (huespedesSelect && maxHuespedes[propiedad]) {
   huespedesSelect.innerHTML = '<option value="">Seleccionar</option>';
@@ -24,19 +46,25 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
 
   const esEmailValido = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const mostrarError = (id, mensaje) => {
-    const campo = document.getElementById(id);
-    const error = document.getElementById("error-" + id);
-    if (campo) campo.classList.add("is-invalid");
-    if (error) error.textContent = mensaje;
-  };
+const mostrarError = (id, mensaje) => {
+  const campo = document.getElementById(id);
+  const error = document.getElementById("error-" + id);
+  if (campo) {
+    campo.classList.add("is-invalid");
+    campo.classList.add("campo-error"); // 🔴 Marca visual
+  }
+  if (error) error.textContent = mensaje;
+};
 
-  const limpiarError = id => {
-    const campo = document.getElementById(id);
-    const error = document.getElementById("error-" + id);
-    if (campo) campo.classList.remove("is-invalid");
-    if (error) error.textContent = "";
-  };
+const limpiarError = id => {
+  const campo = document.getElementById(id);
+  const error = document.getElementById("error-" + id);
+  if (campo) {
+    campo.classList.remove("is-invalid");
+    campo.classList.remove("campo-error"); // 🔴 Limpia marca visual
+  }
+  if (error) error.textContent = "";
+};
 
   const validarCampos = ({ nombre, email, rango, huespedes }) => {
     let valido = true;
@@ -57,6 +85,9 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
 
   const apiKey = "AIzaSyDUkc_gvy-Z5WrXZLXeaUkkiKGkdFN0mNg";
   const fechasOcupadas = [];
+//Muestra el cartel de cargando datos...
+  document.getElementById("loader-overlay").style.display = "flex";
+
 
   const cargarFechasOcupadas = () => {
     return new Promise(resolve => {
@@ -212,6 +243,12 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
         });
       });
 
+
+      
+// Oculta el cartel de cargando datos...
+     document.getElementById("loader-overlay").style.display = "none";
+
+
       document.getElementById("btn-limpiar").addEventListener("click", () => {
         ["nombre", "email", "telefono", "comentarios"].forEach(id => {
           document.getElementById(id).value = "";
@@ -226,23 +263,75 @@ if (huespedesSelect && maxHuespedes[propiedad]) {
         window.location.href = "index.html";
       });
 
-document.getElementById("btn-enviar").addEventListener("click", () => {
+//Monitoreo de campos en tiempo real
+const btnEnviar = document.getElementById("btn-enviar");
+const camposObligatorios = ["nombre", "email", "rango", "huespedes"];
+
+const validarCamposObligatoriosEnTiempoReal = () => {
+  let todosCompletos = true;
+
+  camposObligatorios.forEach(id => {
+    const campo = document.getElementById(id);
+    const valor = campo.value.trim();
+
+    if (!valor) {
+      mostrarError(id, "Este campo es obligatorio.");
+      todosCompletos = false;
+    } else {
+      if (id === "email" && !esEmailValido(valor)) {
+        mostrarError("email", "El formato del correo no es válido.");
+        todosCompletos = false;
+      } else {
+        limpiarError(id);
+      }
+    }
+  });
+
+  btnEnviar.disabled = !todosCompletos;
+};
+
+
+// Ejecutar al cargar
+validarCamposObligatoriosEnTiempoReal();
+
+// Escuchar cambios en los campos
+camposObligatorios.forEach(id => {
+  const campo = document.getElementById(id);
+  campo.addEventListener("input", validarCamposObligatoriosEnTiempoReal);
+  campo.addEventListener("change", validarCamposObligatoriosEnTiempoReal);
+});
+
+
+
+
+//Fin monitoreo
+btnEnviar.addEventListener("click", () => {
   const nombre = document.getElementById("nombre").value.trim();
   const email = document.getElementById("email").value.trim();
   const telefono = document.getElementById("telefono").value.trim();
   const comentarios = document.getElementById("comentarios").value.trim();
-  const rango = input.value;
+  const rango = document.getElementById("rango").value.trim();
   const huespedes = document.getElementById("huespedes").value;
   const total = totalContainer.textContent;
 
-  if (!validarCampos({ nombre, email, rango, huespedes })) return;
+  const esValido = validarCampos({ nombre, email, rango, huespedes });
+
+  if (!esValido) {
+    // Mostrar errores visuales, no enviar
+    return;
+  }
 
   const ahora = new Date();
   const fechaHora = ahora.toLocaleString("es-AR", {
     dateStyle: "full",
     timeStyle: "short"
   });
-// este es el link del mail en Google App script
+
+  const loader = document.getElementById("loader-overlay");
+  const loaderText = loader.querySelector("p");
+  loaderText.textContent = "Estamos procesando tu consulta...";
+  loader.style.display = "flex";
+
   fetch("https://script.google.com/macros/s/AKfycbydWYJGj60EggNpLKvRelwzyd9YbHLgCrrfZT-TKl2zfTUX85TqHCNmhx1Q3rvjxrYQog/exec", {
     method: "POST",
     headers: {
@@ -268,7 +357,6 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
           <img src="assets/logo.png" alt="Aires de Miramar" style="max-width: 150px; margin-bottom: 1rem;">
           <h4 class="mb-3">¡Consulta enviada!</h4>
           <p>Gracias por contactarte. Te responderemos pronto con la disponibilidad y precios.</p>
-          
           <div class="mt-4">
             <p><strong>Número de seguimiento:</strong></p>
             <p id="codigo-seguimiento" class="text-primary fw-bold fs-5">${seguimiento}</p>
@@ -276,7 +364,6 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
               <i class="bi bi-clipboard"></i> Copiar código
             </button>
           </div>
-
           <div class="mt-4">
             <a href="index.html" class="btn btn-primary">Volver al inicio</a>
           </div>
@@ -285,12 +372,15 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
     } else {
       alert("El servidor respondió, pero no se pudo confirmar el envío.");
     }
+    loader.style.display = "none";
   })
   .catch(error => {
     console.error("Error al enviar la consulta:", error);
-    alert("Hubo un problema al conectar con el servidor.");
+    loaderText.textContent = "Hubo un problema al enviar la consulta.";
+    setTimeout(() => loader.style.display = "none", 3000);
   });
 });
+
 
     });
 });
