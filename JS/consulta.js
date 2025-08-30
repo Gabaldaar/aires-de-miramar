@@ -525,7 +525,7 @@ btnEnviar.addEventListener("click", () => {
           return r.minimo;
         }
       }
-      return info.minimoNoches || 1; // fuera de los rangos
+      return info.minimoNoches || 3; // fuera de los rangos
     };
 
     });
