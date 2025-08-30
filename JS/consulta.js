@@ -277,7 +277,7 @@ const limpiarError = id => {
             dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
-            isableMobile: true,
+            disableMobile: true,
             onChange: calcularTotal,
             onDayCreate: function (dObj, dStr, fp, dayElem) {
               agregarPrecioPorDia(dayElem);
