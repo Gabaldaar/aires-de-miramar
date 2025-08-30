@@ -260,6 +260,7 @@ const limpiarError = id => {
             dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
+            disableMobile: true,
             onChange: function (selectedDates) {
               if (selectedDates.length) {
                 egresoPicker.set("minDate", selectedDates[0]);
@@ -276,6 +277,7 @@ const limpiarError = id => {
             dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
+            isableMobile: true,
             onChange: calcularTotal,
             onDayCreate: function (dObj, dStr, fp, dayElem) {
               agregarPrecioPorDia(dayElem);
