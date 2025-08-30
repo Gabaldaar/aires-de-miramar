@@ -66,15 +66,19 @@ const limpiarError = id => {
   if (error) error.textContent = "";
 };
 
-  const validarCampos = ({ nombre, email, rango, huespedes }) => {
-    let valido = true;
-    if (!nombre.trim()) { mostrarError("nombre", "Este campo es obligatorio."); valido = false; } else { limpiarError("nombre"); }
-    if (!email.trim()) { mostrarError("email", "Este campo es obligatorio."); valido = false; }
-    else if (!esEmailValido(email)) { mostrarError("email", "El formato del correo no es válido."); valido = false; } else { limpiarError("email"); }
-    if (!rango.trim()) { mostrarError("rango", "Seleccioná las fechas."); valido = false; } else { limpiarError("rango"); }
-    if (!huespedes.trim()) { mostrarError("huespedes", "Indicá la cantidad de huéspedes."); valido = false; } else { limpiarError("huespedes"); }
-    return valido;
-  };
+    const validarCampos = ({ nombre, email, ingreso, egreso, huespedes }) => {
+      let valido = true;
+
+      if (!nombre.trim()) { mostrarError("nombre", "Este campo es obligatorio."); valido = false; } else { limpiarError("nombre"); }
+      if (!email.trim()) { mostrarError("email", "Este campo es obligatorio."); valido = false; }
+      else if (!esEmailValido(email)) { mostrarError("email", "El formato del correo no es válido."); valido = false; } else { limpiarError("email"); }
+      if (!ingreso.trim()) { mostrarError("ingreso", "Indicá la fecha de ingreso."); valido = false; } else { limpiarError("ingreso"); }
+      if (!egreso.trim()) { mostrarError("egreso", "Indicá la fecha de egreso."); valido = false; } else { limpiarError("egreso"); }
+      if (!huespedes.trim()) { mostrarError("huespedes", "Indicá la cantidad de huéspedes."); valido = false; } else { limpiarError("huespedes"); }
+
+      return valido;
+    };
+
 
   const calendarIds = {
     Brisa: "e50a4bf3b263eb7955e81ba93a8ca17795da344c6c59587afbcf17f36eeeb64a@group.calendar.google.com",
@@ -173,38 +177,47 @@ const limpiarError = id => {
       const totalContainer = document.getElementById("total");
       const input = document.getElementById("rango");
 
-      const calcularTotal = fechas => {
-        if (fechas.length !== 2) {
+      const calcularTotal = () => {
+        const ingreso = ingresoInput.value;
+        const egreso = egresoInput.value;
+
+        if (!ingreso || !egreso) {
           totalContainer.textContent = "";
           return;
         }
-        let actual = new Date(fechas[0]);
-        const checkout = new Date(fechas[1]);
+
+        const inicio = new Date(ingreso);
+        const fin = new Date(egreso);
+
+        if (fin <= inicio) {
+          totalContainer.innerHTML = `<span class="text-danger">La fecha de egreso debe ser posterior a la de ingreso.</span>`;
+          return;
+        }
+
+        let actual = new Date(inicio);
         let total = 0;
         let noches = 0;
-        while (actual < checkout) {
+
+        while (actual < fin) {
           total += obtenerPrecio(actual);
           noches++;
           actual.setDate(actual.getDate() + 1);
         }
 
-          let minimoFinal = minimo;
-
-          if (info.minimosPorRango && fechas.length === 2) {
-            const inicio = new Date(fechas[0]);
-            for (const r of info.minimosPorRango) {
-              const desde = new Date(r.desde);
-              const hasta = new Date(r.hasta);
-              if (inicio >= desde && inicio <= hasta) {
-                minimoFinal = r.minimo;
-                break;
-              }
+        let minimoFinal = minimo;
+        if (info.minimosPorRango) {
+          for (const r of info.minimosPorRango) {
+            const desde = new Date(r.desde);
+            const hasta = new Date(r.hasta);
+            if (inicio >= desde && inicio <= hasta) {
+              minimoFinal = r.minimo;
+              break;
             }
           }
+        }
 
         if (noches < minimoFinal) {
           totalContainer.innerHTML = `<span class="text-danger">La estadía mínima es de ${minimoFinal} noche${minimoFinal > 1 ? 's' : ''}.</span>`;
-
           return;
         }
 
@@ -220,28 +233,28 @@ const limpiarError = id => {
           (descuentoAplicado ? ` <span class="text-muted">(incluye ${descuentoAplicado}% de descuento)</span>` : "");
       };
 
-      cargarFechasOcupadas().then(() => {
-        flatpickr(input, {
-          mode: "range",
-          dateFormat: "Y-m-d",
-          minDate: "today",
-          disable: fechasOcupadas,
-          showMonths: 2,
-          onChange: calcularTotal,
-          onDayCreate: function (dObj, dStr, fp, dayElem) {
-            const fechaISO = dayElem.dateObj.toISOString().split("T")[0];
-            const fecha = new Date(fechaISO);
-            if (dayElem.classList.contains("flatpickr-disabled")) return;
-            const precio = obtenerPrecio(fecha);
-            if (precio) {
-              const etiqueta = document.createElement("span");
-              etiqueta.textContent = `$${precio}`;
-              etiqueta.className = "precio-dia";
-              dayElem.appendChild(etiqueta);
+
+          const ingresoInput = document.getElementById("ingreso");
+          const egresoInput = document.getElementById("egreso");
+
+          flatpickr(ingresoInput, {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            disable: fechasOcupadas,
+            onChange: function (selectedDates) {
+              if (selectedDates.length) {
+                egresoPicker.set("minDate", selectedDates[0]);
+                calcularTotal();
+              }
             }
-          }
-        });
-      });
+          });
+
+          const egresoPicker = flatpickr(egresoInput, {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            disable: fechasOcupadas,
+            onChange: calcularTotal
+          });
 
 
       
@@ -265,7 +278,8 @@ const limpiarError = id => {
 
 //Monitoreo de campos en tiempo real
 const btnEnviar = document.getElementById("btn-enviar");
-const camposObligatorios = ["nombre", "email", "rango", "huespedes"];
+const camposObligatorios = ["nombre", "email", "ingreso", "egreso", "huespedes"];
+
 
 const validarCamposObligatoriosEnTiempoReal = () => {
   let todosCompletos = true;
@@ -317,23 +331,21 @@ camposObligatorios.forEach(id => {
 
 //Fin monitoreo
 btnEnviar.addEventListener("click", () => {
+  if (btnEnviar.disabled) return; // Evita clics si el botón está desactivado
+
   const nombre = document.getElementById("nombre").value.trim();
   const email = document.getElementById("email").value.trim();
   const telefono = document.getElementById("telefono").value.trim();
   const comentarios = document.getElementById("comentarios").value.trim();
-  const rango = document.getElementById("rango").value.trim();
+  const ingreso = document.getElementById("ingreso").value.trim();
+  const egreso = document.getElementById("egreso").value.trim();
   const huespedes = document.getElementById("huespedes").value;
   const total = totalContainer.textContent;
+  const rango = `${ingreso} to ${egreso}`;
 
-  const esValido = validarCampos({ nombre, email, rango, huespedes });
+  if (!validarCampos({ nombre, email, ingreso, egreso, huespedes })) return;
 
-  if (!esValido) {
-    // Mostrar errores visuales, no enviar
-    return;
-  }
-
-  const ahora = new Date();
-  const fechaHora = ahora.toLocaleString("es-AR", {
+  const fechaHora = new Date().toLocaleString("es-AR", {
     dateStyle: "full",
     timeStyle: "short"
   });
@@ -391,6 +403,7 @@ btnEnviar.addEventListener("click", () => {
     setTimeout(() => loader.style.display = "none", 3000);
   });
 });
+
 
 
     });
