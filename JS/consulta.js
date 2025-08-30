@@ -145,12 +145,13 @@ const limpiarError = id => {
         return base;
       };
         const obtenerDescuento = noches => {
+          let mejorDescuento = 0;
           for (const d of descuentos) {
-            if (noches >= d.noches) {
-              return d.porcentaje;
+            if (noches >= d.noches && d.porcentaje > mejorDescuento) {
+              mejorDescuento = d.porcentaje;
             }
           }
-          return 0;
+          return mejorDescuento;
         };
 
               const formatearFecha = iso => {
