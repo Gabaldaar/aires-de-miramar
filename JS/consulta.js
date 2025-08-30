@@ -211,7 +211,10 @@ const limpiarError = id => {
             }
 
             // Mostrar mínimo estándar como "fuera de temporada"
-            textoCondiciones += `<li>${info.minimoNoches || 1} noche${(info.minimoNoches || 1) > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
+            if (!info.minimosPorRango || info.minimosPorRango.length === 0) {
+              const fueraDeRango = info.minimoNoches || 1;
+              textoCondiciones += `<li>${fueraDeRango} noche${fueraDeRango > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
+            }
             textoCondiciones += `</ul>`;
 
             if (descuentos.length) {
