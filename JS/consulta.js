@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ingresoInput = document.getElementById("ingreso");
   const egresoInput = document.getElementById("egreso");
   let egresoPicker;
+  let descuentos = [];
 
 
 
@@ -143,6 +144,14 @@ const limpiarError = id => {
         }
         return base;
       };
+        const obtenerDescuento = noches => {
+          for (const d of descuentos) {
+            if (noches >= d.noches) {
+              return d.porcentaje;
+            }
+          }
+          return 0;
+        };
 
               const formatearFecha = iso => {
           if (!iso || typeof iso !== "string") return iso;
@@ -258,14 +267,50 @@ const limpiarError = id => {
           // 🔽 Validamos contra la mínima más exigente
           if (noches < minimoRequerido) {
             totalContainer.innerHTML = `<span class="text-danger">La estadía seleccionada requiere al menos ${minimoRequerido} noche${minimoRequerido > 1 ? 's' : ''} por las fechas elegidas.</span>`;
+            btnEnviar.disabled =  true;
+            btnEnviar.textContent = "Enviar Consulta";
+            btnEnviar.classList.remove("btn-success");
+            btnEnviar.classList.add("btn-outline-primary");
             return;
           }
-
+            // Si todo está bien
+            btnEnviar.disabled = false;
+            btnEnviar.textContent = "Listo para enviar";
+            btnEnviar.classList.remove("btn-outline-primary");
+            btnEnviar.classList.add("btn-success");
           // 🔽 Si todo está bien, mostramos el total
+          totalContainer.innerHTML = "";
           const descuentoAplicado = obtenerDescuento(noches); // si tenés esta función
           const totalFinal = descuentoAplicado ? total * (1 - descuentoAplicado / 100) : total;
 
           totalContainer.innerHTML = `<strong>Total estimado:</strong> U$S${totalFinal.toFixed(2)}<br><small>${noches} noche${noches > 1 ? 's' : ''}${descuentoAplicado ? ` con ${descuentoAplicado}% de descuento` : ''}</small>`;
+        };
+
+          const cumpleMinimoEstadia = () => {
+          const ingreso = ingresoInput.value;
+          const egreso = egresoInput.value;
+
+          if (!ingreso || !egreso) return false;
+
+          const inicio = new Date(ingreso);
+          const fin = new Date(egreso);
+
+          if (fin <= inicio) return false;
+
+          let actual = new Date(inicio);
+          let noches = 0;
+          let minimoRequerido = 1;
+
+          while (actual < fin) {
+            noches++;
+            const minimoParaDia = obtenerMinimoPorFecha(actual);
+            if (minimoParaDia > minimoRequerido) {
+              minimoRequerido = minimoParaDia;
+            }
+            actual.setDate(actual.getDate() + 1);
+          }
+
+          return noches >= minimoRequerido;
         };
 
 
@@ -367,17 +412,18 @@ const validarCamposObligatoriosEnTiempoReal = () => {
     }
   });
 
-  if (todosCompletos) {
-  btnEnviar.disabled = false;
-  btnEnviar.textContent = "Listo para enviar";
-  btnEnviar.classList.remove("btn-outline-primary");
-  btnEnviar.classList.add("btn-success");
-} else {
-  btnEnviar.disabled = true;
-  btnEnviar.textContent = "Enviar Consulta";
-  btnEnviar.classList.remove("btn-success");
-  btnEnviar.classList.add("btn-outline-primary");
-}
+    if (todosCompletos && cumpleMinimoEstadia()) {
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = "Listo para enviar";
+      btnEnviar.classList.remove("btn-outline-primary");
+      btnEnviar.classList.add("btn-success");
+      calcularTotal(); // fuerza el recalculo
+    } else {
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = "Enviar Consulta";
+      btnEnviar.classList.remove("btn-success");
+      btnEnviar.classList.add("btn-outline-primary");
+    }
 
 };
 
