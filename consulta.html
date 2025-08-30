@@ -62,32 +62,28 @@
     ⏳ Cargando información de la propiedad. Por favor, espere...
   </div>
 
-  <form id="form-consulta">
-    <div class="row g-3">
-      <div class="col-md-8">
-        <label class="form-label">Fechas de estadía</label>
-        <div class="row g-2">
-          <div class="col-md-6">
-            <label for="ingreso" class="form-label">Ingreso <span class="requerido">*</span></label>
-            <input type="text" id="ingreso" class="form-control" required>
-            <div class="invalid-feedback" id="error-ingreso"></div>
-          </div>
-          <div class="col-md-6">
-            <label for="egreso" class="form-label">Egreso <span class="requerido">*</span></label>
-            <input type="text" id="egreso" class="form-control" required>
-            <div class="invalid-feedback" id="error-egreso"></div>
-          </div>
+    <form id="form-consulta">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="ingreso" class="form-label">Ingreso <span class="requerido">*</span></label>
+          <input type="text" id="ingreso" class="form-control" required>
+          <div class="invalid-feedback" id="error-ingreso"></div>
         </div>
+        <div class="col-md-4">
+          <label for="egreso" class="form-label">Egreso <span class="requerido">*</span></label>
+          <input type="text" id="egreso" class="form-control" required>
+          <div class="invalid-feedback" id="error-egreso"></div>
+        </div>
+        <div class="col-md-4">
+          <label for="huespedes" class="form-label">Cantidad de huéspedes <span class="requerido">*</span></label>
+          <select id="huespedes" class="form-select" required>
+            <!-- Las opciones se generan dinámicamente -->
+          </select>
+          <div class="invalid-feedback" id="error-huespedes"></div>
+        </div>
+      </div>
+    </form>
 
-      </div>
-      <div class="col-md-4">
-        <label for="huespedes" class="form-label">Cantidad de huéspedes <span class="requerido">*</span></label>
-        <select id="huespedes" class="form-select" required>
-          <!-- Las opciones se generan dinámicamente -->
-        </select>
-        <div class="invalid-feedback" id="error-huespedes"></div>
-      </div>
-    </div>
 
     <div class="mt-4">
       <h5 class="mb-3">Tus datos</h5>

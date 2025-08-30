@@ -2,6 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const propiedad = params.get("propiedad");
   const tipo = params.get("tipo") || "Departamento";
+  const ingresoInput = document.getElementById("ingreso");
+  const egresoInput = document.getElementById("egreso");
+  let egresoPicker;
+
+
 
 const maxHuespedes = {
   Benteveo: 5,
@@ -139,6 +144,20 @@ const limpiarError = id => {
         return base;
       };
 
+            const agregarPrecioPorDia = (dayElem) => {
+        const fechaISO = dayElem.dateObj.toISOString().split("T")[0];
+        const fecha = new Date(fechaISO);
+        if (dayElem.classList.contains("flatpickr-disabled")) return;
+        const precio = obtenerPrecio(fecha);
+        if (precio) {
+          const etiqueta = document.createElement("span");
+          etiqueta.textContent = `$${precio}`;
+          etiqueta.className = "precio-dia";
+          dayElem.appendChild(etiqueta);
+        }
+      };
+
+
         const condiciones = document.getElementById("condiciones");
         let textoMinimos = `<strong>Estadía mínima:</strong><ul>`;
 
@@ -246,15 +265,25 @@ const limpiarError = id => {
                 egresoPicker.set("minDate", selectedDates[0]);
                 calcularTotal();
               }
+            },
+            onDayCreate: function (dObj, dStr, fp, dayElem) {
+              agregarPrecioPorDia(dayElem);
             }
           });
 
-          const egresoPicker = flatpickr(egresoInput, {
+
+          egresoPicker = flatpickr(egresoInput, {
             dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
-            onChange: calcularTotal
+            onChange: calcularTotal,
+            onDayCreate: function (dObj, dStr, fp, dayElem) {
+              agregarPrecioPorDia(dayElem);
+            }
           });
+
+
+
 
 
       
@@ -262,15 +291,32 @@ const limpiarError = id => {
      document.getElementById("loader-overlay").style.display = "none";
 
 
-      document.getElementById("btn-limpiar").addEventListener("click", () => {
-        ["nombre", "email", "telefono", "comentarios"].forEach(id => {
-          document.getElementById(id).value = "";
+        document.getElementById("btn-limpiar").addEventListener("click", () => {
+          // Limpiar campos de texto
+          ["nombre", "email", "telefono", "comentarios", "ingreso", "egreso"].forEach(id => {
+            document.getElementById(id).value = "";
+          });
+
+          // Limpiar calendarios controlados por flatpickr
+          if (ingresoInput._flatpickr) ingresoInput._flatpickr.clear();
+          if (egresoInput._flatpickr) egresoInput._flatpickr.clear();
+
+          // Limpiar select de huéspedes
+          document.getElementById("huespedes").value = "";
+
+          // Limpiar total estimado
+          totalContainer.textContent = "";
+
+          // Limpiar errores visuales
+          ["nombre", "email", "ingreso", "egreso", "huespedes"].forEach(limpiarError);
+
+          // Desactivar botón de envío
+          btnEnviar.disabled = true;
+          btnEnviar.textContent = "Enviar Consulta";
+          btnEnviar.classList.remove("btn-success");
+          btnEnviar.classList.add("btn-outline-primary");
         });
-        input._flatpickr.clear();
-        document.getElementById("huespedes").value = "";
-        totalContainer.textContent = "";
-        ["nombre", "email", "rango", "huespedes"].forEach(limpiarError);
-      });
+
 
       document.getElementById("btn-volver").addEventListener("click", () => {
         window.location.href = "index.html";
