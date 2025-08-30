@@ -220,61 +220,53 @@ const limpiarError = id => {
       const totalContainer = document.getElementById("total");
       const input = document.getElementById("rango");
 
-      const calcularTotal = () => {
-        const ingreso = ingresoInput.value;
-        const egreso = egresoInput.value;
+        const calcularTotal = () => {
+          const ingreso = ingresoInput.value;
+          const egreso = egresoInput.value;
 
-        if (!ingreso || !egreso) {
-          totalContainer.textContent = "";
-          return;
-        }
+          if (!ingreso || !egreso) {
+            totalContainer.textContent = "";
+            return;
+          }
 
-        const inicio = new Date(ingreso);
-        const fin = new Date(egreso);
+          const inicio = new Date(ingreso);
+          const fin = new Date(egreso);
 
-        if (fin <= inicio) {
-          totalContainer.innerHTML = `<span class="text-danger">La fecha de egreso debe ser posterior a la de ingreso.</span>`;
-          return;
-        }
+          if (fin <= inicio) {
+            totalContainer.innerHTML = `<span class="text-danger">La fecha de egreso debe ser posterior a la de ingreso.</span>`;
+            return;
+          }
 
-        let actual = new Date(inicio);
-        let total = 0;
-        let noches = 0;
+          let actual = new Date(inicio);
+          let total = 0;
+          let noches = 0;
+          let minimoRequerido = 1;
 
-        while (actual < fin) {
-          total += obtenerPrecio(actual);
-          noches++;
-          actual.setDate(actual.getDate() + 1);
-        }
+          // 🔽 Recorremos cada día para calcular total y detectar la mínima más exigente
+          while (actual < fin) {
+            total += obtenerPrecio(actual);
+            noches++;
 
-        let minimoFinal = minimo;
-        if (info.minimosPorRango) {
-          for (const r of info.minimosPorRango) {
-            const desde = new Date(r.desde);
-            const hasta = new Date(r.hasta);
-            if (inicio >= desde && inicio <= hasta) {
-              minimoFinal = r.minimo;
-              break;
+            const minimoParaDia = obtenerMinimoPorFecha(actual);
+            if (minimoParaDia > minimoRequerido) {
+              minimoRequerido = minimoParaDia;
             }
+
+            actual.setDate(actual.getDate() + 1);
           }
-        }
 
-        if (noches < minimoFinal) {
-          totalContainer.innerHTML = `<span class="text-danger">La estadía mínima es de ${minimoFinal} noche${minimoFinal > 1 ? 's' : ''}.</span>`;
-          return;
-        }
-
-        let descuentoAplicado = 0;
-        descuentos.forEach(d => {
-          if (noches >= d.noches && d.porcentaje > descuentoAplicado) {
-            descuentoAplicado = d.porcentaje;
+          // 🔽 Validamos contra la mínima más exigente
+          if (noches < minimoRequerido) {
+            totalContainer.innerHTML = `<span class="text-danger">La estadía seleccionada requiere al menos ${minimoRequerido} noche${minimoRequerido > 1 ? 's' : ''} por las fechas elegidas.</span>`;
+            return;
           }
-        });
 
-        const totalFinal = total * (1 - descuentoAplicado / 100);
-        totalContainer.innerHTML = `Estadía de <strong>${noches}</strong> noche${noches > 1 ? 's' : ''} · Total estimado: <strong>U$S${totalFinal.toFixed(2)}</strong>` +
-          (descuentoAplicado ? ` <span class="text-muted">(incluye ${descuentoAplicado}% de descuento)</span>` : "");
-      };
+          // 🔽 Si todo está bien, mostramos el total
+          const descuentoAplicado = obtenerDescuento(noches); // si tenés esta función
+          const totalFinal = descuentoAplicado ? total * (1 - descuentoAplicado / 100) : total;
+
+          totalContainer.innerHTML = `<strong>Total estimado:</strong> U$S${totalFinal.toFixed(2)}<br><small>${noches} noche${noches > 1 ? 's' : ''}${descuentoAplicado ? ` con ${descuentoAplicado}% de descuento` : ''}</small>`;
+        };
 
 
           const ingresoInput = document.getElementById("ingreso");
@@ -479,7 +471,16 @@ btnEnviar.addEventListener("click", () => {
   });
 });
 
-
+    const obtenerMinimoPorFecha = fecha => {
+      for (const r of info.minimosPorRango) {
+        const desde = new Date(r.desde);
+        const hasta = new Date(r.hasta);
+        if (fecha >= desde && fecha <= hasta) {
+          return r.minimo;
+        }
+      }
+      return info.minimoNoches || 1; // fuera de los rangos
+    };
 
     });
 });

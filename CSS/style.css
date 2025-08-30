@@ -160,10 +160,32 @@ footer .social-links a {
   z-index: 10;
 }
 
+/* Centrar el encabezado del calendario */
+.flatpickr-calendar .flatpickr-months {
+  justify-content: center !important;
+  display: flex !important;
+  width: 100%;
+}
+
+/* Centrar el texto del mes y año */
+.flatpickr-calendar .flatpickr-month {
+  margin: 0 auto;
+  text-align: center;
+  width: auto;
+}
+
 .flatpickr-calendar {
   font-family: 'Nunito', sans-serif;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  width: 100% !important;
+  min-width: 250px;
+  max-width: 320px; /* ajustable según tu diseño */
+  z-index: 9999;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  overflow: visible;
 }
 
 .flatpickr-day {
@@ -189,6 +211,9 @@ footer .social-links a {
   opacity: 1 !important;
   cursor: not-allowed !important;
 }
+
+
+
 
 @media (max-width: 768px) {
   .flatpickr-calendar {
