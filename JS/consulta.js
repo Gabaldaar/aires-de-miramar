@@ -144,6 +144,16 @@ const limpiarError = id => {
         return base;
       };
 
+              const formatearFecha = iso => {
+          if (!iso || typeof iso !== "string") return iso;
+          const fecha = new Date(iso);
+          if (isNaN(fecha)) return iso;
+          const dia = String(fecha.getDate()).padStart(2, "0");
+          const mes = String(fecha.getMonth() + 1).padStart(2, "0");
+          const año = fecha.getFullYear();
+          return `${dia}/${mes}/${año}`;
+        };
+
             const agregarPrecioPorDia = (dayElem) => {
         const fechaISO = dayElem.dateObj.toISOString().split("T")[0];
         const fecha = new Date(fechaISO);
@@ -178,20 +188,34 @@ const limpiarError = id => {
         }
 
         // Mostrar mínimo estándar como "fuera de temporada"
-        textoMinimos += `<li>${info.minimoNoches || 1} noche${(info.minimoNoches || 1) > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
-        textoMinimos += `</ul>`;
+            let textoCondiciones = `<div class="alert alert-info mt-4">`;
+            textoCondiciones += `<p class="mb-1"><strong>Estadía mínima:</strong></p><ul class="mb-3 ps-3">`;
 
-        condiciones.innerHTML = textoMinimos;
+            if (info.minimosPorRango && info.minimosPorRango.length) {
+              info.minimosPorRango.forEach(r => {
+                const desdeFormateado = formatearFecha(r.desde);
+                const hastaFormateado = formatearFecha(r.hasta);
+                textoCondiciones += `<li>${r.minimo} noche${r.minimo > 1 ? 's' : ''} entre ${desdeFormateado} y ${hastaFormateado}</li>`;
 
 
+              });
+            }
 
-      if (descuentos.length) {
-        condiciones.innerHTML += `<strong>Descuentos:</strong><ul>`;
-        descuentos.forEach(d => {
-          condiciones.innerHTML += `<li>${d.porcentaje}% desde ${d.noches} noche${d.noches > 1 ? 's' : ''}</li>`;
-        });
-        condiciones.innerHTML += `</ul>`;
-      }
+            // Mostrar mínimo estándar como "fuera de temporada"
+            textoCondiciones += `<li>${info.minimoNoches || 1} noche${(info.minimoNoches || 1) > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
+            textoCondiciones += `</ul>`;
+
+            if (descuentos.length) {
+              textoCondiciones += `<p class="mb-1"><strong>Descuentos:</strong></p><ul class="ps-3">`;
+              descuentos.forEach(d => {
+                textoCondiciones += `<li>${d.porcentaje}% desde ${d.noches} noche${d.noches > 1 ? 's' : ''}</li>`;
+              });
+              textoCondiciones += `</ul>`;
+            }
+
+            textoCondiciones += `</div>`;
+            condiciones.innerHTML = textoCondiciones;
+
 
       const totalContainer = document.getElementById("total");
       const input = document.getElementById("rango");
@@ -270,7 +294,9 @@ const limpiarError = id => {
             onDayCreate: function (dObj, dStr, fp, dayElem) {
               agregarPrecioPorDia(dayElem);
             }
+            
           });
+
 
 
           egresoPicker = flatpickr(egresoInput, {
@@ -283,9 +309,6 @@ const limpiarError = id => {
               agregarPrecioPorDia(dayElem);
             }
           });
-
-
-
 
 
       
@@ -317,6 +340,9 @@ const limpiarError = id => {
           btnEnviar.textContent = "Enviar Consulta";
           btnEnviar.classList.remove("btn-success");
           btnEnviar.classList.add("btn-outline-primary");
+
+          // 🔴 Ejecutar validación para que los campos vuelvan a marcarse como obligatorios
+          validarCamposObligatoriosEnTiempoReal();
         });
 
 
@@ -440,6 +466,7 @@ btnEnviar.addEventListener("click", () => {
           </div>
         </div>
       `;
+      
     } else {
       alert("El servidor respondió, pero no se pudo confirmar el envío.");
     }

@@ -1,3 +1,7 @@
+V12
+Calendario corregido
+Iconos en todos los campos
+
 V20
 Botón Enviar consulta cambia de estimado
 V19
