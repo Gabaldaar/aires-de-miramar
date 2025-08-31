@@ -1,4 +1,8 @@
-V12
+V22
+Todo funcionando
+
+
+V21
 Calendario corregido
 Iconos en todos los campos
 

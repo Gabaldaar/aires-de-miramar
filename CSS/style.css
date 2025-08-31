@@ -474,7 +474,7 @@ body {
 
 @media (max-width: 576px) {
   .extras-comunes {
-    column-count: 1;
+    column-count: 2;
   }
 }
 
@@ -592,4 +592,27 @@ body {
 .campo-error {
   border: 2px solid #dc3545 !important; /* color rojo Bootstrap */
   background-color: #f8d7da !important; /* fondo rojo claro Bootstrap */
+}
+
+.btn-outline-primary { 
+  background-color: transparent;
+  border-color: #17628d;
+  color: #17628d;
+}
+
+.btn-outline-primary:active {
+  background-color: #17628d !important;
+  border-color: #17628d;
+  color: white;
+}
+
+.btn-outline-primary:hover {
+  background-color: #17628d !important;
+  border-color: #17628d;
+  color: white;
+}
+
+#titulo-propiedad {
+  color: #17628d; /* azul oscuro, por ejemplo */
+
 }
