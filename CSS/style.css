@@ -727,5 +727,11 @@ body {
   margin-top: 0.1rem;    /* espacio debajo del título */
   padding-top: 0%;
 }
+.text-center2 {
+  color: #17628d;         /* azul cálido y profesional */
+  font-weight: 200 !important;       /* letra fina */
+  font-style: normal;
+  font-size: 1rem;     /* ajustable según tu diseño */
 
+}
 
