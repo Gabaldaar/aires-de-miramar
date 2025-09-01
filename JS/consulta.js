@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </button>
             </div>
             <div class="mt-4">
-              <a href="index.html" class="btn btn-primary">Volver al inicio</a>
+              <a href="index.html" class="btn btn-success">Volver al inicio</a>
             </div>
           </div>
         `;

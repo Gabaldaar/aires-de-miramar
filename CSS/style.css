@@ -616,3 +616,22 @@ body {
   color: #17628d; /* azul oscuro, por ejemplo */
 
 }
+
+.spinner {
+  width: 4rem;
+  height: 4rem;
+  border: 0.4rem solid #f3f3f3;
+  border-top: 0.4rem solid #17628d; /* azul personalizado */
+  border-radius: 50%;
+  animation: girar 0.75s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes girar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.text-azul-spinner {
+  color: #17628d !important;
+}
