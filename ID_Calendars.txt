@@ -1,0 +1,47 @@
+AIRBNB
+Brisa: 
+https://www.airbnb.com/calendar/ical/1273505871979011412.ics?s=37911231455e538d9f917c7aba0bc91b&locale=es-419
+
+Coral:
+https://www.airbnb.com/calendar/ical/1272672298933877455.ics?s=111a51cf40b09c88cb4b7a3db686347d&locale=es-419
+
+Benteveo:
+
+
+Belen:
+
+
+----------------------------------------------------------------------------------------------
+BOOKING
+Brisa:
+https://ical.booking.com/v1/export?t=d3b8ced8-7eb6-450a-ab53-9714e9ca355d
+
+Coral:
+https://ical.booking.com/v1/export?t=53cbd3aa-e760-449e-a70c-9c91aa85785b
+
+Benteveo:
+https://ical.booking.com/v1/export?t=84e59c3f-a000-4f7b-b02c-25c510aca00c 
+
+Belen:
+https://ical.booking.com/v1/export?t=dbe9232a-bd2a-404e-b547-b3df69a2c578 
+
+-------------------------------------------------------------------------------------------------
+GOOGLE (ID) 
+Brisa:
+e50a4bf3b263eb7955e81ba93a8ca17795da344c6c59587afbcf17f36eeeb64a@group.calendar.google.com
+Color: #0B8043
+
+Coral:
+4cd0e35e1a0b2c09f2bb18ac4caf0e613ea528dc1d899dfce6018a3b3bb1b5e4@group.calendar.google.com
+Color: #E67C73
+
+Benteveo:
+d7d12046e12d045e55c41b218b0b67261b125711925bc5d8177b00752bc73d11@group.calendar.google.com
+Color: #F6BF26
+
+Belen:
+30ed9d4620e85a878a620f239e818bde2af8dc5f1d2ddc19fbf4241c82aac070@group.calendar.google.com
+Color: #3F51B5
+
+
+GOOGLE CLIENT_ID: 854903464644-6mlnbip8hbui6vdbgi3h9kskqutosofd.apps.googleusercontent.com

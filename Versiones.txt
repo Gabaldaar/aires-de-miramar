@@ -1,3 +1,9 @@
+V25
+Icono giratorio
+Campos requeridos en azulIcono de admiracion
+
+V24
+Funciona OK faltan detalles estéticos
 V22
 Todo funcionando
 

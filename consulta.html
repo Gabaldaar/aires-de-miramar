@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Consulta de disponibilidad</title>
+  <title">Consulta de disponibilidad</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="CSS/style.css">
@@ -29,12 +29,11 @@
   </style>
 </head>
 <body>
-<div id="loader-overlay" style="display: none;">
-  <div class="loader-content">
-    <div class="spinner"></div>
+  <div id="loader-overlay" style="display: none;">
+    <div class="loader-content">
+    <img src="assets/logo.png" alt="Aires de Miramar" class="logo-spinner">
     <p class="text-center text-azul-spinner fw-semibold mt-3">Estamos cargando información de la propiedad. Aguardá un instante...</p>
-    
-  </div>
+   </div>
 </div>
 
 <header class="header-custom text-center py-2">
@@ -42,9 +41,10 @@
     <img src="assets/logo.png" alt="Aires de Miramar" style="width: 100%; height: auto;">
     <p class="slogan">Tu refugio en el mar</p>
   </div>
-  <h2 class="text-muted" style="font-weight: 400; font-size: 1.5rem;">
-    Consulta de Disponibilidad
-  </h2>
+    <h2 class="titulo-consulta">
+      Consulta de Disponibilidad
+    </h2>
+
 </header>
 
 <section class="container my-4">
@@ -66,51 +66,64 @@
     ⏳ Cargando información de la propiedad. Por favor, espere...
   </div>
 
-    <form id="form-consulta">
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label for="ingreso" class="bi bi-calendar-check me-2 text-primary cursor-pointer">Ingreso <span class="requerido">*</span></label>
-          <input type="text" id="ingreso" class="form-control" required>
-          <div class="invalid-feedback" id="error-ingreso"></div>
+      <form id="form-consulta">
+        <div class="row g-3">
+          <div class="col-md-4 campo-con-icono">
+            <label for="ingreso" class="form-label label-consulta">
+              <i class="bi bi-calendar-check me-2 cursor-pointer"></i>
+              Ingreso <span class="requerido">*</span>
+            </label>
+            <input type="text" id="ingreso" class="form-control" required>
+            <div class="invalid-feedback" id="error-ingreso"></div>
+          </div>
+
+          <div class="col-md-4 campo-con-icono">
+            <label for="egreso" class="form-label label-consulta">
+              <i class="bi bi-calendar-x me-2 cursor-pointer"></i>
+              Egreso <span class="requerido">*</span>
+            </label>
+            <input type="text" id="egreso" class="form-control" required>
+            <div class="invalid-feedback" id="error-egreso"></div>
+          </div>
+
+          <div class="col-md-4 campo-con-icono">
+            <label for="huespedes" class="form-label label-consulta">
+              <i class="bi bi-people-fill me-2"></i>
+              Cantidad de huéspedes <span class="requerido">*</span>
+            </label>
+            <select id="huespedes" class="form-select" required>
+              <!-- Las opciones se generan dinámicamente -->
+            </select>
+            <div class="invalid-feedback" id="error-huespedes"></div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <label for="egreso" class="bi bi-calendar-x me-2 text-primary cursor-pointer">Egreso <span class="requerido">*</span></label>
-          <input type="text" id="egreso" class="form-control" required>
-          <div class="invalid-feedback" id="error-egreso"></div>
-        </div>
-        <div class="col-md-4">
-          <label for="huespedes" class="bi bi-people-fill me-2 text-primary">Cantidad de huéspedes <span class="requerido">*</span></label>
-          <select id="huespedes" class="form-select" required>
-            <!-- Las opciones se generan dinámicamente -->
-          </select>
-          <div class="invalid-feedback" id="error-huespedes"></div>
-        </div>
-      </div>
-    </form>
+      </form>
+
 
 
     <div class="mt-4">
-      <h5 class="mb-3">Tus datos</h5>
+      <h5 class="mb-3 form-label">Tus datos</h5>
 
-      <div class="mb-3">
+      <div class="mb-3 campo-con-icono">
         <label for="nombre" class="form-label">
-          <i class="bi bi-person-fill me-2 text-primary"></i>Nombre completo <span class="requerido">*</span>
+          <i class="bi bi-person-fill me-2 "></i>Nombre completo <span class="requerido">*</span>
         </label>
         <input type="text" class="form-control" id="nombre" placeholder="Ej: Nombre Apellido" required>
         <div class="invalid-feedback" id="error-nombre"></div>
       </div>
 
-      <div class="mb-3">
+      <div class="mb-3 campo-con-icono">
         <label for="email" class="form-label">
-          <i class="bi bi-envelope-fill me-2 text-primary"></i>Mail <span class="requerido">*</span>
+          <i class="bi bi-envelope-fill me-2 "></i>Mail <span class="requerido">*</span>
         </label>
         <input type="email" class="form-control" id="email" placeholder="Ej: tunombre@email.com" required>
         <div class="invalid-feedback" id="error-email"></div>
       </div>
 
+
       <div class="mb-3">
         <label for="telefono" class="form-label">
-          <i class="bi bi-telephone-fill me-2 text-primary"></i>Teléfono
+          <i class="bi bi-telephone-fill me-2 "></i>Teléfono
         </label>
         <input type="tel" class="form-control" id="telefono" placeholder="Ej: +54 11 1234 5678">
       </div>
@@ -118,7 +131,7 @@
 
     <div class="mb-3">
       <label for="comentarios" class="form-label">
-        <i class="bi bi-chat-dots me-2 text-primary" id="icon-comentarios" style="cursor: pointer;"></i>
+        <i class="bi bi-chat-dots me-2" id="icon-comentarios" style="cursor: pointer;"></i>
         Comentarios adicionales
       </label>
       <textarea class="form-control" id="comentarios" rows="3" placeholder="¿Hay algo más que quieras contarnos?"></textarea>

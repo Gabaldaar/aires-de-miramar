@@ -234,16 +234,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const mostrarError = (id, mensaje) => {
     const campo = document.getElementById(id);
     const error = document.getElementById("error-" + id);
-    if (campo) campo.classList.add("is-invalid", "campo-error");
-    if (error) error.textContent = mensaje;
-  };
-
-  const limpiarError = id => {
+      if (campo) {
+        campo.classList.remove("is-valid");
+        campo.classList.add("is-invalid");
+      }
+      if (error) error.textContent = mensaje;
+    };
+    const limpiarError = id => {
     const campo = document.getElementById(id);
     const error = document.getElementById("error-" + id);
-    if (campo) campo.classList.remove("is-invalid", "campo-error");
-    if (error) error.textContent = "";
-  };
+      if (campo) {
+        campo.classList.remove("is-invalid");
+        campo.classList.add("is-valid");
+      }
+      if (error) error.textContent = "";
+    };;
 
   const validarCampos = ({ nombre, email, ingreso, egreso, huespedes }) => {
     let valido = true;
@@ -421,4 +426,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = "index.html";
   });
 });
+
 

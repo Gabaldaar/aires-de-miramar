@@ -34,6 +34,19 @@ body {
   animation: fadeInText 2s ease 2s forwards;
 }
 
+.logo-spinner {
+  width: 80px;
+  height: 80px;
+  animation: girarLogo 1s linear infinite;
+  margin: 0 auto;
+  display: block;
+}
+
+@keyframes girarLogo {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 x
 /* Animaciones */
 @keyframes draw {
@@ -225,7 +238,7 @@ footer .social-links a {
 
 .carousel {
   position: relative;
-  min-height: 300px
+  min-height: 200px
 }
 
 .carousel-item {
@@ -410,16 +423,6 @@ footer .social-links a {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* sombra inferior */
 }
 
-.slogan {
-  font-family: 'Segoe UI', 'Open Sans', sans-serif;
-  font-size: 1.8rem;
-  color: #e2bf7e; /* tono arena */
-  width: 100%;
-  letter-spacing: 0.5px;
-  margin-top: 0.1rem;
-  font-style: italic;
-  text-align: center;
-}
 
 .header-custom h2 {
   font-weight: 400;
@@ -524,16 +527,19 @@ body {
   margin: 0 auto;
 }
 
+
 .slogan {
-  font-size: 1.5rem;
-  color: #e2bf7e;
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  color: #e2bf7e; /* tono arena */
+  width: 100%;
   letter-spacing: 0.5px;
-  margin-top: 0.3rem;
-  margin-bottom: 0;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
   font-style: italic;
   text-align: center;
-  width: 100%;
 }
+
 
 @media (max-width: 576px) {
   .header-custom {
@@ -589,10 +595,7 @@ body {
   to { transform: rotate(360deg); }
 }
 
-.campo-error {
-  border: 2px solid #dc3545 !important; /* color rojo Bootstrap */
-  background-color: #f8d7da !important; /* fondo rojo claro Bootstrap */
-}
+
 
 .btn-outline-primary { 
   background-color: transparent;
@@ -635,3 +638,86 @@ body {
 .text-azul-spinner {
   color: #17628d !important;
 }
+
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+  background-image: none !important;
+  border-color: transparent; /* #17628d !important; */
+  background-color: #f0f8ff !important; /* azul claro */
+  box-shadow: 0 0 0 0.2rem rgba(23, 98, 141, 0.25);
+  position: relative;
+  padding-right: 2.5rem; /* espacio para el ícono */
+}
+
+.invalid-feedback {
+  color: #17628d !important;
+  font-weight: 500;
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: #17628d !important;
+  background-color: #f0f8ff !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+
+.form-control.is-valid,
+.form-select.is-valid {
+  border-color: #178d62 !important;
+  background-color: #f6fff9 !important;
+  
+}
+
+/* Evitar sombra roja al enfocar campos inválidos */
+.form-control.is-invalid:focus,
+.form-select.is-invalid:focus {
+  border-color: #17628d !important;
+  box-shadow: none !important;
+  
+}
+
+/* Evitar sombra verde al enfocar campos válidos */
+.form-control.is-valid:focus,
+.form-select.is-valid:focus {
+  border-color: #178d62 !important;
+  box-shadow: none !important;
+}
+
+.form-label {
+  color: #17628d; /* tu azul personalizado */
+  font-weight: 400;
+    margin-bottom: 0.1rem; /* más pegado al campo */
+  display: flex;
+  align-items: center;
+  gap: 0.2rem; /* espacio entre ícono y texto */
+  
+}
+
+.label-consulta {
+  color: #17628d;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 0.1rem; /* más pegado al campo */
+  display: flex;
+  align-items: center;
+  gap: 0.2rem; /* espacio entre ícono y texto */
+}
+
+.label-consulta i {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.titulo-consulta {
+  color: #17628d;         /* azul cálido y profesional */
+  font-weight: 300;       /* letra fina */
+  font-size: 1.7rem;     /* ajustable según tu diseño */
+  margin-bottom: 0.1rem;    /* espacio debajo del título */
+  margin-top: 0.1rem;    /* espacio debajo del título */
+  padding-top: 0%;
+}
+
+
+
