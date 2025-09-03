@@ -15,6 +15,14 @@ body {
   padding: 0;
 }
 
+.logo-grande {
+  width: 100%;
+  max-width: 820px; /* Ajustá este valor según el tamaño que prefieras */
+  height: auto;
+  margin-bottom: 1%;
+  margin-top: 0.5% ;
+}
+
 /* Logo animado */
 .logo-container {
   animation: fadeIn 2s ease-in-out;
@@ -729,7 +737,7 @@ body {
 }
 .text-center2 {
   color: #17628d;         /* azul cálido y profesional */
-  font-weight: 200 !important;       /* letra fina */
+  font-weight: 250 !important;       /* letra fina */
   font-style: normal;
   font-size: 1rem;     /* ajustable según tu diseño */
 

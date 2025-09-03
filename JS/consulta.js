@@ -373,7 +373,7 @@ const cumpleMinimoEstadia = () => {
       if (seguimiento.startsWith("CM-")) {
         document.querySelector("section.container").innerHTML = `
           <div class="alert alert-success text-center mt-5">
-            <img src="assets/logo.png" alt="Aires de Miramar" style="max-width: 150px; margin-bottom: 1rem;">
+            <img src="assets/logoA.png" alt="Aires de Miramar" style="max-width: 150px; margin-bottom: 1rem;">
             <h4 class="mb-3">¡Consulta enviada!</h4>
             <p>Gracias por contactarte. Te responderemos pronto con la disponibilidad y precios.</p>
             <div class="mt-4">
