@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
       document.getElementById("loader-overlay").style.display = "flex";
-
-      fetch("https://script.google.com/macros/s/AKfycbzpuEP62QgEHg4rL-MYUFkXE2gN0zKI6zs9ZjFeRkuAi6-IqucbdSXOE-jlD3n0qlji2A/exec")
+      //Esta URL se saca de la imlementación del App Script de Google
+      fetch("https://script.google.com/macros/s/AKfycbydV_8lJDQJYFHQ8s93saUmtRiFnT_oY75NginyZOv8YOCVSwsyEWhjvvZ6mdyMo1N8oQ/exec?modo=datos")
         .then(res => res.json())
         .then(precios => {
           info = precios[propiedad];
