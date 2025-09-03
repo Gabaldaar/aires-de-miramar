@@ -735,3 +735,8 @@ body {
 
 }
 
+.footer-text {
+  font-size: 0.95rem;   /* Ajustá el tamaño según prefieras */
+  color: #17628d;          /* Color gris suave, opcional */
+  font-weight: 400;     /* Peso normal */
+}

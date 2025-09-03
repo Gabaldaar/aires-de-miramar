@@ -36,10 +36,10 @@
       { "desde": "2025-09-15", "hasta": "2025-09-30", "precio": 120 },
       { "desde": "2025-10-12", "hasta": "2025-10-25", "precio": 150 }
     ],
-    "minimoNoches": 2,
+    "minimoNoches": 3,
     "minimosPorRango": [
       { "desde": "2025-12-01", "hasta": "2026-03-30", "minimo": 15 },
-      { "desde": "2025-04-01", "hasta": "2025-11-30", "minimo": 3 }
+      { "desde": "2025-04-01", "hasta": "2025-04-30", "minimo": 4 }
     ],
     "descuentos": [
       { "noches": 7, "porcentaje": 4 },

@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
             info.minimosPorRango.forEach(r => {
               textoCondiciones += `<li>${r.minimo} noche${r.minimo > 1 ? 's' : ''} entre ${formatearFecha(r.desde)} y ${formatearFecha(r.hasta)}</li>`;
             });
-          } else {
-            textoCondiciones += `<li>${info.minimoNoches || 3} noche${info.minimoNoches > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
           }
 
+          // Mostrar siempre el mínimo base como referencia
+          textoCondiciones += `<li>${info.minimoNoches || 3} noche${info.minimoNoches > 1 ? 's' : ''} fuera de los rangos anteriores</li>`;
           textoCondiciones += `</ul>`;
 
           if (info.descuentos && info.descuentos.length) {
@@ -171,14 +171,20 @@ document.addEventListener('DOMContentLoaded', () => {
     return mejorDescuento;
   };
 
-  const obtenerMinimoPorFecha = fecha => {
-    for (const r of info.minimosPorRango || []) {
-      const desde = new Date(r.desde);
-      const hasta = new Date(r.hasta);
-      if (fecha >= desde && fecha <= hasta) return r.minimo;
+const obtenerMinimoPorEstadia = (ingreso, egreso) => {
+  const inicio = new Date(ingreso);
+  const fin = new Date(egreso);
+
+  for (const r of info.minimosPorRango || []) {
+    const desde = new Date(r.desde);
+    const hasta = new Date(r.hasta);
+    if (inicio >= desde && fin <= hasta) {
+      return r.minimo;
     }
-    return info.minimoNoches || 3;
-  };
+  }
+
+  return info.minimoNoches || 3;
+};
 
   const agregarPrecioPorDia = (dayElem) => {
     const fechaISO = dayElem.dateObj.toISOString().split("T")[0];
@@ -208,15 +214,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let actual = new Date(inicio);
     let total = 0;
     let noches = 0;
-    let minimoRequerido = 1;
 
     while (actual < fin) {
       total += obtenerPrecio(actual);
       noches++;
-      const minimoParaDia = obtenerMinimoPorFecha(actual);
-      if (minimoParaDia > minimoRequerido) minimoRequerido = minimoParaDia;
       actual.setDate(actual.getDate() + 1);
     }
+
+    const minimoRequerido = obtenerMinimoPorEstadia(ingreso, egreso);
+
 
     if (noches < minimoRequerido) {
       totalContainer.innerHTML = `<span class="text-danger">La estadía seleccionada requiere al menos ${minimoRequerido} noche${minimoRequerido > 1 ? 's' : ''} por las fechas elegidas.</span>`;
@@ -261,28 +267,21 @@ document.addEventListener('DOMContentLoaded', () => {
     return valido;
   };
 
-  const cumpleMinimoEstadia = () => {
-    const ingreso = ingresoInput.value;
-    const egreso = egresoInput.value;
-    if (!ingreso || !egreso) return false;
+const cumpleMinimoEstadia = () => {
+  const ingreso = ingresoInput.value;
+  const egreso = egresoInput.value;
+  if (!ingreso || !egreso) return false;
 
-    const inicio = new Date(ingreso);
-    const fin = new Date(egreso);
-    if (fin <= inicio) return false;
+  const inicio = new Date(ingreso);
+  const fin = new Date(egreso);
+  if (fin <= inicio) return false;
 
-    let actual = new Date(inicio);
-    let noches = 0;
-    let minimoRequerido = 1;
+  const noches = Math.ceil((fin - inicio) / (1000 * 60 * 60 * 24));
+  const minimoRequerido = obtenerMinimoPorEstadia(ingreso, egreso);
 
-    while (actual < fin) {
-      noches++;
-      const minimoParaDia = obtenerMinimoPorFecha(actual);
-      if (minimoParaDia > minimoRequerido) minimoRequerido = minimoParaDia;
-      actual.setDate(actual.getDate() + 1);
-    }
+  return noches >= minimoRequerido;
+};
 
-    return noches >= minimoRequerido;
-  };
 
   const btnEnviar = document.getElementById("btn-enviar");
   const camposObligatorios = ["nombre", "email", "ingreso", "egreso", "huespedes"];
