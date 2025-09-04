@@ -65,7 +65,7 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-x
+
 /* Animaciones */
 @keyframes draw {
   to {
@@ -105,7 +105,7 @@ footer .social-links a {
 
 .footer-custom {
   background-color: #eaf4fb;
-  color: #17628d;
+  color: #015275;
   border-top: 1px solid #cce0ee;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05); /* sombra superior */
 }
@@ -113,12 +113,12 @@ footer .social-links a {
 
 .footer-custom {
   background-color: #eaf4fb; /* azul muy suave */
-  color: #17628d; /* azul principal */
+  color: #015275; /* azul principal */
   border-top: 1px solid #cce0ee;
 }
 
 .footer-custom a {
-  color: #17628d;
+  color: #015275;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -155,7 +155,7 @@ footer .social-links a {
 
 /* Estilos personalizados para íconos */
 .icono-maps {
-  color: #17628d; /* o el color que prefieras */
+  color: #015275; /* o el color que prefieras */
 }
 
 
@@ -333,11 +333,11 @@ footer .social-links a {
 
 /* Botón de consulta */
 .btn-success:active {
-  background-color: #17628d;
+  background-color: #015275;
 }
 
 .btn-success {
-  background-color: #17628d;
+  background-color: #015275;
   border: none;
 }
 
@@ -348,7 +348,7 @@ footer .social-links a {
 
 .btn-success:active,
 .btn-success:focus {
-  background-color: #17628d !important;
+  background-color: #015275 !important;
   border: none !important;
   box-shadow: none !important;
   color: #fff !important;
@@ -364,7 +364,7 @@ footer .social-links a {
 
 .card-title {
   font-size: 1.5rem;
-  color: #17628d;
+  color: #015275;
   font-weight: bold;
 }
 
@@ -437,7 +437,7 @@ footer .social-links a {
 /*Header*/
 .header-custom {
   background-color: #eaf4fb; /* azul suave */
-  color: #17628d;            /* azul principal */
+  color: #015275;            /* azul principal */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* sombra inferior */
 }
 
@@ -445,7 +445,7 @@ footer .social-links a {
 .header-custom h2 {
   font-weight: 400;
   font-size: 1.5rem;
-  color: #17628d;
+  color: #015275;
   margin-top: 1rem;
 }
 .header-custom {
@@ -480,7 +480,7 @@ body {
 }
 
 .extras-comunes i {
-  color: #17628d;
+  color: #015275;
 }
 .bi bi-geo-alt-fill {
   color: #8d1727;
@@ -501,7 +501,7 @@ body {
 
 
 .icono-comun {
-  color: #17628d;
+  color: #015275;
   font-size: 1.1rem;
   margin-right: 6px;
   vertical-align: middle;
@@ -617,24 +617,24 @@ body {
 
 .btn-outline-primary { 
   background-color: transparent;
-  border-color: #17628d;
-  color: #17628d;
+  border-color: #015275;
+  color: #015275;
 }
 
 .btn-outline-primary:active {
-  background-color: #17628d !important;
-  border-color: #17628d;
+  background-color: #015275 !important;
+  border-color: #015275;
   color: white;
 }
 
 .btn-outline-primary:hover {
-  background-color: #17628d !important;
-  border-color: #17628d;
+  background-color: #015275 !important;
+  border-color: #015275;
   color: white;
 }
 
 #titulo-propiedad {
-  color: #17628d; /* azul oscuro, por ejemplo */
+  color: #015275; /* azul oscuro, por ejemplo */
 
 }
 
@@ -642,7 +642,7 @@ body {
   width: 4rem;
   height: 4rem;
   border: 0.4rem solid #f3f3f3;
-  border-top: 0.4rem solid #17628d; /* azul personalizado */
+  border-top: 0.4rem solid #015275; /* azul personalizado */
   border-radius: 50%;
   animation: girar 0.75s linear infinite;
   margin: 0 auto;
@@ -654,7 +654,7 @@ body {
 }
 
 .text-azul-spinner {
-  color: #17628d !important;
+  color: #015275 !important;
 }
 
 
@@ -669,13 +669,13 @@ body {
 }
 
 .invalid-feedback {
-  color: #17628d !important;
+  color: #015275 !important;
   font-weight: 500;
 }
 
 .form-control.is-invalid,
 .form-select.is-invalid {
-  border-color: #17628d !important;
+  border-color: #015275 !important;
   background-color: #f0f8ff !important;
   box-shadow: none !important;
   background-image: none !important;
@@ -691,7 +691,7 @@ body {
 /* Evitar sombra roja al enfocar campos inválidos */
 .form-control.is-invalid:focus,
 .form-select.is-invalid:focus {
-  border-color: #17628d !important;
+  border-color: #015275 !important;
   box-shadow: none !important;
   
 }
@@ -704,7 +704,7 @@ body {
 }
 
 .form-label {
-  color: #17628d; /* tu azul personalizado */
+  color: #015275; /* tu azul personalizado */
   font-weight: 400;
     margin-bottom: 0.1rem; /* más pegado al campo */
   display: flex;
@@ -714,7 +714,7 @@ body {
 }
 
 .label-consulta {
-  color: #17628d;
+  color: #015275;
   font-weight: 400;
   font-size: 1rem;
   margin-bottom: 0.1rem; /* más pegado al campo */
@@ -729,7 +729,7 @@ body {
 }
 
 .titulo-consulta {
-  color: #17628d;         /* azul cálido y profesional */
+  color: #015275;         /* azul cálido y profesional */
   font-weight: 300;       /* letra fina */
   font-size: 1.7rem;     /* ajustable según tu diseño */
   margin-bottom: 0.1rem;    /* espacio debajo del título */
@@ -756,7 +756,7 @@ body {
 
 
 .text-center {
-  color: #17628d;         /* azul cálido y profesional */
+  color: #015275;         /* azul cálido y profesional */
   font-weight: 450;       /* letra fina */
   font-size: 1.7rem;     /* ajustable según tu diseño */
   margin-bottom: 0.1rem;    /* espacio debajo del título */
@@ -764,7 +764,7 @@ body {
   padding-top: 0%;
 }
 .text-center2 {
-  color: #17628d;         /* azul cálido y profesional */
+  color: #015275;         /* azul cálido y profesional */
   font-weight: 250 !important;       /* letra fina */
   font-style: normal;
   font-size: 1rem;     /* ajustable según tu diseño */
@@ -773,7 +773,7 @@ body {
 
 .footer-text {
   font-size: 0.95rem;   /* Ajustá el tamaño según prefieras */
-  color: #17628d;          /* Color gris suave, opcional */
+  color: #015275;          /* Color gris suave, opcional */
   font-weight: 400;     /* Peso normal */
 }
 
