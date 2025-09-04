@@ -737,6 +737,24 @@ body {
   padding-top: 0%;
 }
 
+.text-elegi {
+  color: #2f8fb5;           /* azul cálido y profesional */
+  font-weight: 450;         /* letra fina */
+  font-size: 1.5rem;        /* tamaño base */
+  margin: 0.1rem auto;      /* centrado vertical y horizontal */
+  text-align: center;       /* centrado del contenido */
+  padding: 0 1rem;          /* espacio lateral en móviles */
+  max-width: 100%;
+}
+
+@media (max-width: 576px) {
+  .text-elegi {
+    font-size: 1.2rem;      /* más compacto en móviles */
+    padding: 0 2rem;        /* más espacio a los lados */
+  }
+}
+
+
 .text-center {
   color: #17628d;         /* azul cálido y profesional */
   font-weight: 450;       /* letra fina */
@@ -758,3 +776,4 @@ body {
   color: #17628d;          /* Color gris suave, opcional */
   font-weight: 400;     /* Peso normal */
 }
+
