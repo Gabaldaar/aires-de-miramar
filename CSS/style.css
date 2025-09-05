@@ -71,6 +71,32 @@ body {
   }
 }
 
+/* ...existing code... */
+@media (max-width: 576px) {
+  .logo-wrapper {
+    max-width: 180px;
+    gap: 0.5rem;
+  }
+  .logo-a {
+    width: 50px;
+  }
+  .logo-onda {
+    width: 60px;
+    left: -100px;
+  }
+  .logo-texto {
+    width: 110px;
+  }
+}
+@media (max-width: 576px) {
+  @keyframes moverOnda {
+    to {
+      left: 21px; /* Ajustá este valor para que la onda quede justo al lado de la A chica */
+      opacity: 1;
+    }
+  }
+}
+/* ...existing code... */
 
 .logo-grande {
   width: 100%;
