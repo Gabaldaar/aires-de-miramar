@@ -420,6 +420,8 @@ body {
   background-color: #ffffff;
   color: #015275;
   border: none;
+  padding: 0.1rem 1rem !important; /* Espaciado interno */
+
 }
 
 .btn-header:hover {
@@ -429,6 +431,27 @@ body {
 
 .btn-header:active,
 .btn-header:focus {
+  background-color: #E9F6FA;
+  color: #015275;
+}
+
+.btn-nos {
+  background-color: #ffffff;
+  color: #015275;
+  border: none;
+  display: inline-block;
+  letter-spacing: 1px; /* Espaciado entre letras */
+  padding: 0.1rem 4.55rem !important; /* Espaciado interno */
+
+}
+
+.btn-nos:hover {
+  background-color: #E9F6FA;
+  color: #015275;
+}
+
+.btn-nos:active,
+.btn-nos:focus {
   background-color: #E9F6FA;
   color: #015275;
 }
@@ -468,7 +491,7 @@ body {
   font-family: 'Noto Serif', serif;
   color: #015275; /* Color primario del brandbook */
   font-weight: 450;         /* letra fina */
-  font-size: 1.75rem;        /* tamaño base */
+  font-size: 1.5rem;        /* tamaño base */
   color: #015275;
   font-weight: bold;
 }
@@ -841,6 +864,7 @@ body {
   }
 }
 
+
 @media (min-width: 768px) and (max-width: 991px) {
   .titulo-consulta {
     font-size: 1.2rem;
@@ -875,7 +899,7 @@ body {
 
 @media (max-width: 576px) {
   .text-elegi {
-    font-size: 1.2rem;      /* más compacto en móviles */
+    font-size: 1.5rem;      /* más compacto en móviles */
     padding: 0 2rem;        /* más espacio a los lados */
   }
 }
@@ -992,6 +1016,14 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
+#btn-nosotros {
+  pointer-events: auto;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.5rem;
+  margin-top: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
 @media (max-width: 576px) {
   .header-banner {
     min-height: 200px !important; /* Aumentá este valor según el tamaño del logo y botón */
@@ -1088,14 +1120,22 @@ body {
 .seccion-bienvenida {
   background-color: #fafafa; /* Fondo cálido del brandbook */
   color: #015275;            /* Texto primario */
+  margin-bottom: 0%; /* o el valor que prefieras */
 }
 
 .titulo-bienvenida {
   font-family: 'Noto Serif', serif;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #015275;
 }
+
+@media (max-width: 576px) {
+  .titulo-bienvenida {
+    font-size: 1.5rem;
+  }
+}
+
 
 .texto-bienvenida {
   text-align: justify;
@@ -1104,15 +1144,36 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: #015275;
 }
-
-.imagen-bienvenida {
-  max-width: 100%;
-  height: auto;
-
+@media (max-width: 576px) {
+  .texto-bienvenida {
+    font-size: 1rem;
+  }
 }
 
 
-@media (max-width: 768px) {
+.imagen-bienvenida-wrapper {
+  margin-top: 0rem;   /* Espacio entre texto y imagen */
+  margin-bottom: 3rem; /* Espacio entre imagen y lo que sigue */
+  text-align: center;
+}
+
+.imagen-bienvenida {
+  max-width: 700px;
+  width: 60%;
+  height: auto;
+  border-radius: 8px;
+;
+}
+
+@media (max-width: 576px) {
+  .imagen-bienvenida-wrapper {
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
+}
+
+
+@media (max-width: 576px) {
   .img-presentacion {
     width: 100%;
     height: auto;
@@ -1172,17 +1233,28 @@ body {
 .titulo-nosotros {
   font-family: 'Noto Serif', serif;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   color: #015275;
 }
-
+@media (min-width: 576px) {
+  .titulo-nosotros {
+    font-size: 2rem;
+  }
+}
 .texto-nosotros {
   text-align: justify;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.7;
   font-family: 'Plus Jakarta Sans', sans-serif;
   color: #015275;
 }
+
+@media (max-width: 576px) {
+  .texto-nosotros {
+    font-size: 1rem;
+  }
+}
+
 
 .imagen-nosotros {
   max-width: 40%;

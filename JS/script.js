@@ -185,3 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+    document.getElementById('btn-nosotros').addEventListener('click', function() {
+    const ficha = document.getElementById('nosotros');
+    if (ficha) {
+      ficha.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
