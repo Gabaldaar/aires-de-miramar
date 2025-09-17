@@ -17,42 +17,74 @@
   <!-- Flatpickr CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-  <!-- Encabezado con logo estatico -->
+ 
 
-<header class="header-custom text-center py-2">
-  <div class="logo-wrapper animacion-logo">
-    <img src="assets/isoa.svg" alt="Letra A" class="logo-a">
-    <img src="assets/onda.svg" alt="Onda decorativa" class="logo-onda">
-    <img src="assets/logo_Txt.png" alt="Texto Aires de Miramar" class="logo-texto">
+<!-- Banner Header con Carrousel y Logo -->
+<header class="header-banner position-relative">
+  <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/banner/banner1.png" class="d-block w-100 banner-img" alt="Banner 1">
+      </div>
+      <div class="carousel-item">
+        <img src="img/banner/banner2.png" class="d-block w-100 banner-img" alt="Banner 2">
+      </div>
+      <!-- Agregá más imágenes si querés -->
+    </div>
+    <!-- Flechas opcionales -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
-
-<!--  
- <div class="logo-wrapper" style="max-width: 420px; margin: 0 auto;">
-    <img src="assets/logo.png" alt="Aires de Miramar" class="logo-grande">
-    <p class="slogan">Tu refugio en el mar</p>
-</div> 
--->
-
+  <!-- Logo centrado sobre el carrousel -->
+  <div class="banner-logo-container">
+        <img src="assets/logoblco.png" alt="Logo Aires" class="banner-logo">
+    <button class="btn btn-header mt-3" id="btn-elegi-destino">Elegí tu próximo destino</button>
+  </div>
 </header>
 
+
+
+
+<!--Seccion de presentación de las propiedades  -->
+
+<section class="container-fluid py-5 seccion-bienvenida d-flex flex-column align-items-center text-center">
+  <div class="col-md-8">
+    
+    <h2 class="titulo-bienvenida mb-3">¡Tu lugar en Miramar!</h2>
+    <p class="texto-bienvenida">
+      En <strong>Aires de Miramar</strong> contamos con departamentos cerca del centro y de la playa, ideales para disfrutar de la ciudad y el mar a pocos pasos, con toda la comodidad de tener todo al alcance.
+    </p>
+    <p class="texto-bienvenida">
+      Nuestras casas se encuentran en el barrio Lomas de Miramar, un entorno natural único con un microclima especial, rodeado de más de 100.000 m² de espacios verdes y una gran variedad de árboles que crean un ambiente de calma y serenidad.
+    </p>
+    <img src="img/presentacion/imgpresent.png" alt="Vista de Miramar" class="img-fluid mb-4 imagen-bienvenida">
+  </div>
+</section>
+
+
+
+
+
   <!-- Sección de propiedades -->
-  <section class="container my-2">
-    <h2 class="text-elegi mb-2">Elegí tu próximo destino</h2>
+  <section class="container my-2" id="nuestras-propiedades">
+    <h2 class="text-elegi mb-2">Nuestras propiedades</h2>
     <div class="row g-2">
 <!------------------------------------------------------------------------>
-
-
 <!------------------------------------------------------------------------>
-
+<section class="container my-2" id="fichas-propiedades"></section>
       <!-- CASA BELEN -->
      <div class="col-md-6">
         <div class="card shadow-sm">
-            <div id="carousel-belen" class="carousel slide mb-1" data-bs-interval="false" data-bs-ride="false">
+            <div id="carousel-belen" class="carousel slide mb-1 prop-carousel" data-bs-interval="false" data-bs-ride="false">
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -111,17 +143,22 @@
             <li class="list-inline-item me-3">
                 <i class="bi bi-people icono-comun"></i> Hasta 4 personas
             </li>
-           <li class="list-inline-item me-3">
-            <a href="https://www.google.com/maps?q=-38.24557450918798, -57.83516276141395" target="_blank" title="Abrir en Google Maps" class="text-decoration-none text-muted">
-                <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
-            </a>
-            </li>
+
+            <li class="list-inline-item me-3">
+                <a href="https://www.google.com/maps?q=-38.24557450918798, -57.83516276141395" 
+                  target="_blank" 
+                  title="Abrir en Google Maps" 
+                  class="text-decoration-none text-ubicacion">
+                  <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
+                </a>
+              </li>
             </ul>
 
-              <!-- Mostrar más -->
-    <button type="button" class="btn btn-success" onclick="toggleExtras('Belen')" id="btn-extras-Belen">
-      <i class="bi bi-chevron-down me-1"></i> Mostrar más
-    </button>
+
+        <!-- Mostrar más comodidades -->
+    <p class="mostrar-comodidades" onclick="toggleExtras('Belen')">
+      <strong>Mostrar más comodidades</strong> <i class="bi bi-chevron-down"></i>
+    </p>
 
     <ul id="extras-Belen" class="extras-comunes list-unstyled text-muted mb-3" style="display: none;">
       <li><i class="bi bi-wifi me-2"></i> WiFi</li>
@@ -138,7 +175,7 @@
     <hr class="mt-3 mb-2">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3">
       <a href="consulta.html?propiedad=Belen&tipo=Casa" class="btn btn-success">
-        Consultar Disponibilidad y Precios
+        Ver Disponibilidad y Precios
       </a>
     </div>
        
@@ -151,7 +188,7 @@
     <!-- CASA BENTEVEO -->
         <div class="col-md-6">
         <div class="card shadow-sm">
-            <div id="carousel-benteveo" class="carousel slide mb-1" data-bs-interval="false" data-bs-ride="false">
+            <div id="carousel-benteveo" class="carousel slide mb-1  prop-carousel" data-bs-interval="false" data-bs-ride="false">
 
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -210,19 +247,24 @@
             <li class="list-inline-item me-3">
                 <i class="bi bi-people icono-comun"></i> Hasta 5 personas
             </li>
-           <li class="list-inline-item me-3">
-            <a href="https://www.google.com/maps?q=-38.24577522773446, -57.834929094138225" target="_blank" title="Abrir en Google Maps" class="text-decoration-none text-muted">
-                <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
-            </a>
-            </li>
+
+            <li class="list-inline-item me-3">
+                <a href="https://www.google.com/maps?q=-38.24577522773446, -57.834929094138225" 
+                  target="_blank" 
+                  title="Abrir en Google Maps" 
+                  class="text-decoration-none text-ubicacion">
+                  <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
+                </a>
+              </li>
             </ul>
+
 
               <!-- Mostrar más -->
 
-    <button type="button" class="btn btn-success" onclick="toggleExtras('Benteveo')" id="btn-extras-Brisa">
-      <i class="bi bi-chevron-down me-1"></i> Mostrar más
-    </button>
-
+        <!-- Mostrar más comodidades -->
+    <p class="mostrar-comodidades" onclick="toggleExtras('Benteveo')">
+      <strong>Mostrar más comodidades</strong> <i class="bi bi-chevron-down"></i>
+    </p>
 
     <ul id="extras-Benteveo" class="extras-comunes list-unstyled text-muted mb-3" style="display: none;">
       <li><i class="bi bi-wifi me-2"></i> WiFi</li>
@@ -241,7 +283,7 @@
     <hr class="mt-3 mb-2">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3">
       <a href="consulta.html?propiedad=Benteveo&tipo=Casa" class="btn btn-success">
-        Consultar Disponibilidad y Precios
+        Ver Disponibilidad y Precios
       </a>
     </div>
        
@@ -253,7 +295,7 @@
 <!-- DEPARTAMENTO BRISA -->
      <div class="col-md-6">
         <div class="card shadow-sm">
-            <div id="carousel-brisa" class="carousel slide mb-1" data-bs-interval="false" data-bs-ride="false">
+            <div id="carousel-brisa" class="carousel slide mb-1 prop-carousel" data-bs-interval="false" data-bs-ride="false">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                 <img src="./img/brisa/brisa01.jpg" class="d-block w-100" alt="Departamento brisa - Imagen 1">
@@ -311,17 +353,22 @@
             <li class="list-inline-item me-3">
                 <i class="bi bi-people icono-comun"></i> Hasta 3 personas
             </li>
-           <li class="list-inline-item me-3">
-            <a href="https://www.google.com/maps?q=-38.27610868823796, -57.845086166092536" target="_blank" title="Abrir en Google Maps" class="text-decoration-none text-muted">
-                <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
-            </a>
-            </li>
+
+            <li class="list-inline-item me-3">
+                <a href="https://www.google.com/maps?q=-38.27610868823796, -57.845086166092536" 
+                  target="_blank" 
+                  title="Abrir en Google Maps" 
+                  class="text-decoration-none text-ubicacion">
+                  <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
+                </a>
+              </li>
             </ul>
 
-              <!-- Mostrar más -->
-    <button type="button" class="btn btn-success" onclick="toggleExtras('Brisa')" id="btn-extras-Brisa">
-      <i class="bi bi-chevron-down me-1"></i> Mostrar más
-    </button>
+
+    <!-- Mostrar más comodidades -->
+    <p class="mostrar-comodidades" onclick="toggleExtras('Brisa')">
+      <strong>Mostrar más comodidades</strong> <i class="bi bi-chevron-down"></i>
+    </p>
 
     <ul id="extras-Brisa" class="extras-comunes list-unstyled text-muted mb-3" style="display: none;">
       <li><i class="bi bi-wifi me-2"></i> WiFi</li>
@@ -339,7 +386,7 @@
     <hr class="mt-3 mb-2">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3">
       <a href="consulta.html?propiedad=Brisa&tipo=Departamento" class="btn btn-success">
-        Consultar Disponibilidad y Precios
+        Ver Disponibilidad y Precios
       </a>
     </div>
        
@@ -353,7 +400,7 @@
       <!-- DEPARTAMENTO CORAL -->
      <div class="col-md-6">
         <div class="card shadow-sm">
-            <div id="carousel-coral" class="carousel slide mb-1" data-bs-interval="false" data-bs-ride="false">
+            <div id="carousel-coral" class="carousel slide mb-1 prop-carousel" data-bs-interval="false" data-bs-ride="false">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                 <img src="./img/coral/coral01.jpg" class="d-block w-100" alt="Departamento coral - Imagen 1">
@@ -411,17 +458,24 @@
             <li class="list-inline-item me-3">
                 <i class="bi bi-people icono-comun"></i> Hasta 4 personas
             </li>
-           <li class="list-inline-item me-3">
-            <a href="https://www.google.com/maps?q=-38.27610868823796, -57.845086166092536" target="_blank" title="Abrir en Google Maps" class="text-decoration-none text-muted">
-                <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
-            </a>
-            </li>
+           
+              <li class="list-inline-item me-3">
+                <a href="https://www.google.com/maps?q=-38.27610868823796,-57.845086166092536" 
+                  target="_blank" 
+                  title="Abrir en Google Maps" 
+                  class="text-decoration-none text-ubicacion">
+                  <i class="bi bi-geo-alt-fill icono-maps"></i> Ver ubicación
+                </a>
+              </li>
             </ul>
 
-              <!-- Mostrar más -->
-    <button type="button" class="btn btn-success" onclick="toggleExtras('Coral')" id="btn-extras-Coral">
-      <i class="bi bi-chevron-down me-1"></i> Mostrar más
-    </button>
+
+
+    <!-- Mostrar más comodidades -->
+    <p class="mostrar-comodidades" onclick="toggleExtras('Coral')">
+      <strong>Mostrar más comodidades</strong> <i class="bi bi-chevron-down"></i>
+    </p>
+
 
     <ul id="extras-Coral" class="extras-comunes list-unstyled text-muted mb-3" style="display: none;">
       <li><i class="bi bi-wifi me-2"></i> WiFi</li>
@@ -439,7 +493,7 @@
     <hr class="mt-3 mb-2">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-3">
       <a href="consulta.html?propiedad=Coral&tipo=Departamento" class="btn btn-success">
-        Consultar Disponibilidad y Precios
+        Ver Disponibilidad y Precios
       </a>
     </div>
        
@@ -451,40 +505,55 @@
     </div>
   </section>
 
-  <!-- Footer -->
- <!--<footer class="footer-custom footer-fixed-lg text-center py-4">-->
-<footer class="footer-custom text-center py-4">
+ <section class="container-fluid py-5 seccion-nosotros d-flex flex-column align-items-center text-center">
+  <div class="col-md-8">
+    <img src="img/presentacion/nosotros.png" alt="Cecilia y Gabriel" class="img-fluid mb-4 imagen-nosotros">
+    <h2 class="titulo-nosotros mb-3">Nosotros</h2>
+    <p class="texto-nosotros">
+      Somos Cecilia y Gabriel, anfitriones de Aires de Miramar. Nos une la pasión por la fotografía, la creatividad y el deseo de crear espacios que transmitan calma y belleza. Gabriel es ingeniero electrónico y fotógrafo, curioso por las nuevas tecnologías; Cecilia viene del mundo editorial, ama la jardinería y disfruta restaurar muebles con historia.
+    </p>
+    <p class="texto-nosotros">
+      De nuestros viajes y experiencias nació Aires de Miramar, un proyecto creado con dedicación para compartir lo que más amamos: la naturaleza, el mar y la calidez de un hogar. Te invitamos a vivir esta experiencia con nosotros, en un lugar pensado para que te sientas bienvenido e inspirado.
+    </p>
+  </div>
+</section>
 
-  <p class="mb-2 footer-text">&copy; 2025 <strong>Aires de Miramar</strong> · Miramar, Buenos Aires</p>
+
+
+ <!--<footer class="footer-custom footer-fixed-lg text-center py-4">-->
+
+<footer class="footer-custom text-center py-4">
+  
   <div class="social-links footer-text">
-    <a href="https://instagram.com/alquileres.miramar" target="_blank" class="me-3">
+    <a href="https://instagram.com/alquileres.miramar" target="_blank" class="me-3 social-link">
       <i class="bi bi-instagram"></i> Instagram
     </a>
-    <a href="https://wa.me/5491134866504" target="_blank" class="me-3">
+    <a href="https://wa.me/5491134866504" target="_blank" class="me-3 social-link">
       <i class="bi bi-whatsapp"></i> WhatsApp
     </a>
-    <a href="https://facebook.com/tuusuario" target="_blank" class="me-3">
+    <a href="https://www.facebook.com/Alquileres.AiresdeMiramar?mibextid=ZbWKwL" target="_blank" class="me-3 social-link">
       <i class="bi bi-facebook"></i> Facebook
     </a>
-      <a href="mailto:cecilia.veronica.gutierrez@gmail.com?subject=Consulta%20desde%20la%20web%20de%20Aires%20de%20Miramar" target="_blank">
-        <i class="bi bi-envelope"></i> Email
-      </a>
+    <a href="mailto:consultas@airesdemiramar.com" target="_blank" class="social-link">
+      <i class="bi bi-envelope-fill"></i> Email
+    </a>
+    <p class="mb-2 footer-text">&copy; 2025 <strong>Aires de Miramar</strong> · Miramar, Buenos Aires</p>
   </div>
 </footer>
+
   <!-- Ícono flotante de WhatsApp -->
   <a href="https://wa.me/5491134866504" class="whatsapp-float" target="_blank">
     <img src="assets/whatsapp-icon.png" alt="WhatsApp">
   </a>
 
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
   <!-- Flatpickr JS -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="JS/script.js"></script>
+  
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
-  
+  <script src="JS/script.js"></script>
   
 </body>
 </html>

@@ -1,0 +1,31 @@
+# Archivos y carpetas del sistema operativo
+Thumbs.db
+Desktop.ini
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos temporales y de caché
+*.log
+*.tmp
+.cache/
+node_modules/
+dist/
+build/
+
+# Archivos de respaldo
+*~
+
+# Archivos de entorno (si usas variables de entorno)
+.env
+.env.*
+
+# Archivos de salida de editores
+*.swp
+*.swo
+
+# Archivos de imágenes originales (si solo subes optimizadas)
+#imagenes-originales/
+
+# Otros archivos que no quieras subir
+# Agrega aquí cualquier carpeta o archivo propio que no quieras versionar

@@ -427,3 +427,30 @@ const cumpleMinimoEstadia = () => {
 });
 
 
+// Obtener parámetros de la URL
+const params = new URLSearchParams(window.location.search);
+const propiedad = params.get("propiedad"); // "Belen"
+const tipo = params.get("tipo");           // "Casa"
+
+const titulo = `${tipo} ${propiedad}`; // "Casa Belen"
+document.getElementById("titulo-propiedad").textContent = titulo;
+
+// Ruta basada en nombre de propiedad
+const carpeta = propiedad.toLowerCase(); // "belen"
+const imagenSrc = `img/${carpeta}/${carpeta}01.jpg`;
+
+const img = document.getElementById("imagen-propiedad");
+img.src = imagenSrc;
+img.alt = `Imagen de ${titulo}`;
+
+// Imagen por defecto si no se encuentra
+img.onerror = () => {
+  img.src = "img/propiedades/default.jpg";
+  img.alt = "Imagen no disponible";
+};
+
+
+ //"Casa Belen": "img/propiedades/belen/belen01.jpg",
+ // "Casa Benteveo": "img/propiedades/benteveo/benteveo01.jpg",
+ // "Departamento Brisa": "img/propiedades/brisa/brisa01.jpg",
+ // "Departamento Coral": "img/propiedades/coral/coral01.jpg"

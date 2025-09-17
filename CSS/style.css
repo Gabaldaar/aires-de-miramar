@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap');
 /* Paleta costera */
 :root {
   --color-mar: #2C6E7E;
@@ -10,16 +11,20 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--color-arena);
+  
   color: var(--color-texto);
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
 /*Logo con movimieto*/
 .logo-wrapper {
   position: relative;
-  max-width: 620px; /* ajustado al tamaño del logo completo */
+  max-width: 620px; 
   margin: 1rem auto;
   display: flex;
   align-items: center;
@@ -168,6 +173,7 @@ body {
 }
 
 
+
 /* Ícono flotante de WhatsApp */
 .whatsapp-float {
   position: fixed;
@@ -178,41 +184,57 @@ body {
 }
 
 /* Footer */
-
-
-footer .social-links a {
-  color: var(--color-mar);
-  margin: 0 8px;
-  text-decoration: none;
-}
-
 .footer-custom {
-  background-color: #eaf4fb;
-  color: #015275;
-  border-top: 1px solid #cce0ee;
-  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05); /* sombra superior */
+  background-color: #015275; /* Background 3 */
+  color: #ffffff;            /* Primary text */
 }
 
-
-.footer-custom {
-  background-color: #eaf4fb; /* azul muy suave */
-  color: #015275; /* azul principal */
-  border-top: 1px solid #cce0ee;
+.footer-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  color: #ececec;
 }
 
-.footer-custom a {
-  color: #015275;
+.social-link {
+  color: #dfdfdf;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
+    text-decoration: none;
+  font-weight: 00;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
 }
 
-.footer-custom a:hover {
-  color: #3b85b1;
-}
-
-.footer-custom i {
+.social-link i {
   margin-right: 6px;
+  color: #5FD0E0;
+  transition: color 0.3s;
 }
+
+.social-link:hover,
+.social-link:hover i {
+  color: #5FD0E0; /* Accent color on hover */
+}
+
+.social-links {
+  flex-direction: row;
+}
+
+@media (max-width: 576px) {
+  .social-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-text {
+    font-size: 0.95rem;
+  }
+}
+
+
 
 .text-titulo {
   margin-top: 0 !important;
@@ -224,7 +246,6 @@ footer .social-links a {
   padding-top:3% !important;
 }
 
-
 @media (min-width: 992px) {
   .footer-fixed-lg {
     position: fixed;
@@ -234,7 +255,6 @@ footer .social-links a {
     z-index: 100;
   }
 }
-
 
 /* Estilos personalizados para íconos */
 .icono-maps {
@@ -327,47 +347,40 @@ footer .social-links a {
 }
 
 
-
-
 @media (max-width: 768px) {
   .flatpickr-calendar {
     width: 100% !important;
   }
 }
 
-/*Carrousel*/
+/*Carrousel
 
 .carousel {
   position: relative;
   min-height: 200px
-}
-
-.carousel-item {
-  height: 400px; /* Altura fija para todas las imágenes */
+}/*
+/* CARROUSEL*/
+/*.carousel-item {
+  height: 400px; 
   background-color: #f8f8f8;
   text-align: center;
-}
+}*/
 
 
-.carousel-control-prev,
-.carousel-control-next {
+.prop-carousel-control-prev,
+.prop-carousel-control-next {
   width: 50px;
   height: 50px;
-  background-color: rgba(18, 98, 145, 0.2); /* verde con transparencia */
+  background-color: rgba(18, 98, 145, 0.5); /* verde con transparencia */
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
   transition: background-color 0.3s ease;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  background-color: rgba(18, 98, 145, 0.5);
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
   background-size: 60% 60%;
+}
+.prop-carousel-inner {
+  aspect-ratio: unset;
+  overflow: hidden;
 }
 
 
@@ -389,18 +402,6 @@ footer .social-links a {
 }
 
 
-
-/* Título destacado 
-.card-title {
-  font-size: 1.5rem;
-  color: #198754;
-  font-weight: bold;
-  margin-bottom: 0.75rem;
-  background-color: #e9f7ef;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-} */
-
 /* Separación entre fichas */
 .card + .card {
   margin-top: 5rem;
@@ -412,6 +413,24 @@ footer .social-links a {
 #extras-Belen,
 #extras-Benteveo {
   transition: all 0.5s ease;
+}
+
+
+.btn-header {
+  background-color: #ffffff;
+  color: #015275;
+  border: none;
+}
+
+.btn-header:hover {
+  background-color: #E9F6FA;
+  color: #015275;
+}
+
+.btn-header:active,
+.btn-header:focus {
+  background-color: #E9F6FA;
+  color: #015275;
 }
 
 /* Botón de consulta */
@@ -446,37 +465,28 @@ footer .social-links a {
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-family: 'Noto Serif', serif;
+  color: #015275; /* Color primario del brandbook */
+  font-weight: 450;         /* letra fina */
+  font-size: 1.75rem;        /* tamaño base */
   color: #015275;
   font-weight: bold;
+}
+
+.card-text {
+  color: #015275; /* Color primario del brandbook */
+  font-weight: 450;         /* letra fina */
+  font-size: 1rem;        /* tamaño base */
+  
 }
 
 .card-body {
   padding: 1.5rem;
 }
 
-.carousel-inner {
-  aspect-ratio: unset;
-  overflow: hidden;
-}
-
-.carousel-item {
-  height: auto;
-  background-color: #f8f8f8;
-  text-align: center;
-}
-
-.carousel-item img {
-  object-fit: contain;
-  width: 100%;
-  max-height: 400px;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-}
 
 @media (max-width: 768px) {
-  .carousel-item img {
+  .prop-carousel-item img {
     max-height: 60vh;
   }
 }
@@ -487,8 +497,6 @@ footer .social-links a {
     height: 100%;
   }
 }
-
-
 
 @keyframes fadeUp {
   from {
@@ -505,13 +513,8 @@ footer .social-links a {
   animation: fadeUp 0.6s ease forwards;
   opacity: 0;
 }
-.carousel-item img {
-  transition: transform 0.5s ease;
-}
 
-.carousel-item img:hover {
-  transform: scale(1.03);
-}
+
 .btn-success:active {
   transform: scale(0.98);
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
@@ -560,21 +563,29 @@ body {
 .extras-comunes li {
   padding: 4px 0;
   border-bottom: 1px dashed #ddd;
+  color: #015275;
 }
 
 .extras-comunes i {
-  color: #015275;
+  color: #5FD0E0;
 }
 .bi bi-geo-alt-fill {
-  color: #8d1727;
+  color: #015275;
 }
 
 .extras-comunes {
+  color: #015275;
   font-size: 0.95rem;
   padding-left: 0;
   column-count: 2;
   column-gap: 2rem;
 }
+
+.list-inline-item {
+  color: #015275;
+
+}
+
 
 @media (max-width: 576px) {
   .extras-comunes {
@@ -584,7 +595,7 @@ body {
 
 
 .icono-comun {
-  color: #015275;
+  color: #5FD0E0;
   font-size: 1.1rem;
   margin-right: 6px;
   vertical-align: middle;
@@ -812,18 +823,50 @@ body {
 }
 
 .titulo-consulta {
-  color: #015275;         /* azul cálido y profesional */
-  font-weight: 300;       /* letra fina */
-  font-size: 1.7rem;     /* ajustable según tu diseño */
+ 
+  color: #f8f8f8;         /* azul cálido y profesional */
+  text-align: center;
+  font-weight: 500;       /* letra fina */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  
   margin-bottom: 0.1rem;    /* espacio debajo del título */
   margin-top: 0.1rem;    /* espacio debajo del título */
   padding-top: 0%;
 }
 
+/* Responsividad */
+@media (min-width: 992px) {
+  .titulo-consulta {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .titulo-consulta {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .titulo-consulta {
+    font-size: 1rem;
+  }
+}
+
+
+.banner-logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .text-elegi {
-  color: #2f8fb5;           /* azul cálido y profesional */
+  font-family: 'Noto Serif', serif;
+  color: #015275; /* Color primario del brandbook */
   font-weight: 450;         /* letra fina */
-  font-size: 1.5rem;        /* tamaño base */
+  font-size: 2rem;        /* tamaño base */
   margin: 0.1rem auto;      /* centrado vertical y horizontal */
   text-align: center;       /* centrado del contenido */
   padding: 0 1rem;          /* espacio lateral en móviles */
@@ -839,6 +882,7 @@ body {
 
 
 .text-center {
+  font-family: 'Noto Serif', serif;
   color: #015275;         /* azul cálido y profesional */
   font-weight: 450;       /* letra fina */
   font-size: 1.7rem;     /* ajustable según tu diseño */
@@ -854,9 +898,301 @@ body {
 
 }
 
-.footer-text {
-  font-size: 0.95rem;   /* Ajustá el tamaño según prefieras */
-  color: #015275;          /* Color gris suave, opcional */
-  font-weight: 400;     /* Peso normal */
+
+
+
+/* Altura reducida para la barra de navegación en todo el sitio */
+.navbar {
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
+  min-height: 42px;
+}
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1.1rem;
+}
+.navbar-nav .nav-link {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-size: 1rem;
 }
 
+
+/* Carrusel exclusivo del banner header */
+.header-banner {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.header-banner .carousel,
+.header-banner .carousel-inner,
+.header-banner .carousel-item {
+  height: 320px !important;
+  min-height: 180px;
+}
+
+.header-banner .carousel-item {
+  background: none !important;
+  text-align: center;
+  height: 320px !important;
+}
+
+
+.header-banner .banner-img {
+  height: 320px !important;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+  background: none !important;
+}
+
+
+@media (max-width: 576px) {
+  .header-banner .carousel,
+  .header-banner .carousel-inner,
+  .header-banner .carousel-item,
+  .header-banner .banner-img {
+    height: 180px !important;
+  }
+}
+
+.banner-logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.banner-logo {
+  width: 580px; /*Ajusta el tamaño del logo */
+  max-width: 98w;
+  /*background: rgba(1, 86, 119, 0.1); /* más transparente */
+  border-radius: 18px;
+  /*box-shadow: 0 4px 24px rgba(0,0,0);*/
+  padding: 0.8rem 2.2rem; /* un poco más de espacio */
+  pointer-events: auto;
+  transition: background 0.3s, width 0.3s;
+}
+
+#btn-elegi-destino {
+  pointer-events: auto;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.5rem;
+  margin-top: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 576px) {
+  .header-banner {
+    min-height: 200px !important; /* Aumentá este valor según el tamaño del logo y botón */
+    height: 200px !important;
+  }
+  .header-banner .carousel,
+  .header-banner .carousel-inner,
+  .header-banner .carousel-item,
+  .header-banner .banner-img {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
+  .banner-logo-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    transform: none;
+    top: 0;
+    left: 0;
+  }
+  .banner-logo {
+    width: 270px; /*Ajusta el tamaño del logo en moviles */
+    padding: 0.5rem 1.2rem;
+  }
+}
+
+.prop-carousel .carousel-control-prev,
+.prop-carousel .carousel-control-next {
+  width: 48px;
+  height: 48px;
+  background: rgba(24, 90, 107, 0.012); /* Fondo flechas */
+  border-radius: 50%;
+  
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: background 0.32s, border 0.2s;
+  box-shadow: 0 2px 8px rgba(44,110,126,0.02);
+  z-index: 2;
+}
+
+.prop-carousel .carousel-control-prev:hover,
+.prop-carousel .carousel-control-next:hover {
+  background: rgba(24, 101, 121, 0.12); /* Fondo flechas al pasar mouse*/
+  
+}
+
+.prop-carousel .carousel-control-prev-icon,
+.prop-carousel .carousel-control-next-icon {
+  /*filter: invert(1) brightness(2);*/
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+
+/* Carrusel de propiedades: imagen apaisada ocupa todo el ancho y alto del contenedor */
+
+.prop-carousel .carousel-item {
+  height: 100% !important;
+  min-height: 0 !important;
+  background: #fff !important;
+  padding: 0;
+}
+
+.prop-carousel .carousel-item img {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover !important; /* Ocupa todo el contenedor, recorta si es necesario */
+  margin: 0 auto;
+  display: block;
+  background: #fff;
+}
+
+.prop-carousel .carousel-control-prev,
+.prop-carousel .carousel-control-next {
+  position: absolute;
+}
+
+.prop-carousel .carousel-control-prev {
+  left: 12px;
+}
+
+.prop-carousel .carousel-control-next {
+  right: 12px;
+}
+
+
+.seccion-bienvenida {
+  background-color: #fafafa; /* Fondo cálido del brandbook */
+  color: #015275;            /* Texto primario */
+}
+
+.titulo-bienvenida {
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #015275;
+}
+
+.texto-bienvenida {
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #015275;
+}
+
+.imagen-bienvenida {
+  max-width: 100%;
+  height: auto;
+
+}
+
+
+@media (max-width: 768px) {
+  .img-presentacion {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .seccion-bienvenida .col-md-6 {
+    text-align: center;
+  }
+  .seccion-bienvenida img {
+    max-width: 90% !important;
+    height: 120px !important;
+    margin-bottom: 1rem;
+  }
+  .seccion-bienvenida .d-flex {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+}
+
+
+.text-ubicacion {
+  color: #015275;
+  
+}
+
+.icono-maps {
+  color: #5FD0E0;
+}
+.mostrar-comodidades {
+  cursor: pointer;
+  color: #015275;         /* Azul cálido del brandbook */
+  font-weight: 600;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.mostrar-comodidades:hover {
+  color: #0088a9;         /* Tono más claro al pasar el mouse */
+  text-decoration: underline;
+}
+
+.mostrar-comodidades i {
+  margin-left: 4px;
+  vertical-align: middle;
+ 
+}
+
+
+.seccion-nosotros {
+  background-color: #fafafa; /* Background 3 del brandbook */
+  color: #015275;            /* Primary text */
+}
+
+.titulo-nosotros {
+  font-family: 'Noto Serif', serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  color: #015275;
+}
+
+.texto-nosotros {
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #015275;
+}
+
+.imagen-nosotros {
+  max-width: 40%;
+  height: auto;
+ 
+}
+
+.imagen-propiedad {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

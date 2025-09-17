@@ -35,31 +35,48 @@
    </div>
 </div>
 
-<header class="header-custom text-center py-2">
-  <div class="logo-wrapper animacion-logo">
-    <img src="assets/isoa.svg" alt="Letra A" class="logo-a">
-    <img src="assets/onda.svg" alt="Onda decorativa" class="logo-onda">
-    <img src="assets/logo_Txt.png" alt="Texto Aires de Miramar" class="logo-texto">
+<!-- Banner Header con Carrousel y Logo -->
+<header class="header-banner position-relative">
+  <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/banner/banner1.png" class="d-block w-100 banner-img" alt="Banner 1">
+      </div>
+      <div class="carousel-item">
+        <img src="img/banner/banner2.png" class="d-block w-100 banner-img" alt="Banner 2">
+      </div>
+      <!-- Agregá más imágenes si querés -->
+    </div>
+    <!-- Flechas opcionales -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
+  <!-- Logo centrado sobre el carrousel -->
+  <div class="banner-logo-container">
+        <img src="assets/logoblco.png" alt="Logo Aires" class="banner-logo">
+        <h2 class="titulo-consulta">
+        Consulta de Disponibilidad
+        </h2>
+  </div>
+</header>
 
-<!--  
- <div class="logo-wrapper" style="max-width: 420px; margin: 0 auto;">
-    <img src="assets/logo.png" alt="Aires de Miramar" class="logo-grande">
-    <p class="slogan">Tu refugio en el mar</p>
-</div> 
--->
-
-    <h2 class="titulo-consulta">
-      Consulta de Disponibilidad
-    </h2>
 
 </header>
 
 <section class="container my-4">
   <h3 id="titulo-propiedad" class="text-center mb-4"></h3>
+  <div class="text-center mb-4">
+  <img id="imagen-propiedad" src="" alt="Imagen de la propiedad" class="img-fluid imagen-propiedad">
+</div>
+
 
   <div class="alert alert-info mt-4" role="alert">
     <h5 class="mb-2">Lo que tenés que saber</h5>
+    <h6 class="mb-2">Desde aquí podés ver precios, fechas disponibles y consultarnos lo que quieras.</h6>
     <ul class="mb-0 ps-3">
       <li>Los precios p/noche pueden variar según las fechas elegidas.</li>
       <li>Puede haber diferentes descuentos según la cantidad de noches.</li>
@@ -161,21 +178,21 @@
 </section>
 
 <footer class="footer-custom text-center py-4">
-
-  <p class="mb-2 footer-text">&copy; 2025 <strong>Aires de Miramar</strong> · Miramar, Buenos Aires</p>
+  
   <div class="social-links footer-text">
-    <a href="https://instagram.com/alquileres.miramar" target="_blank" class="me-3">
+    <a href="https://instagram.com/alquileres.miramar" target="_blank" class="me-3 social-link">
       <i class="bi bi-instagram"></i> Instagram
     </a>
-    <a href="https://wa.me/5491134866504" target="_blank" class="me-3">
+    <a href="https://wa.me/5491134866504" target="_blank" class="me-3 social-link">
       <i class="bi bi-whatsapp"></i> WhatsApp
     </a>
-    <a href="https://facebook.com/tuusuario" target="_blank" class="me-3">
+    <a href="https://www.facebook.com/Alquileres.AiresdeMiramar?mibextid=ZbWKwL" target="_blank" class="me-3 social-link">
       <i class="bi bi-facebook"></i> Facebook
     </a>
-      <a href="mailto:cecilia.veronica.gutierrez@gmail.com?subject=Consulta%20desde%20la%20web%20de%20Aires%20de%20Miramar" target="_blank">
-        <i class="bi bi-envelope"></i> Email
-      </a>
+    <a href="mailto:consultas@airesdemiramar.com" target="_blank" class="social-link">
+      <i class="bi bi-envelope-fill"></i> Email
+    </a>
+    <p class="mb-2 footer-text">&copy; 2025 <strong>Aires de Miramar</strong> · Miramar, Buenos Aires</p>
   </div>
 </footer>
 

@@ -7,20 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 🖼️ Contador de imágenes en carrusel Brisa
-  const carousel = document.getElementById('carouselBrisa');
-  const contador = document.getElementById('contadorBrisa');
-  if (carousel && contador) {
-    const items = carousel.querySelectorAll('.carousel-item');
-    const total = items.length;
-    const updateCounter = () => {
-      const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active')) + 1;
-      contador.textContent = `${activeIndex} / ${total}`;
-    };
-    updateCounter();
-    const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
-    carousel.addEventListener('slid.bs.carousel', updateCounter);
-  }
 
   // 🧩 Función para mostrar extras
   window.toggleExtras = function(propiedad) {
@@ -189,19 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.querySelectorAll('.carousel').forEach(carousel => {
-  const items = carousel.querySelectorAll('.carousel-item');
-  const total = items.length;
-  const contadorId = carousel.id.replace('carousel', 'contador');
-  const contador = document.getElementById(contadorId);
-  if (!contador) return;
 
-  const updateCounter = () => {
-    const activeIndex = Array.from(items).findIndex(item => item.classList.contains('active')) + 1;
-    contador.textContent = `${activeIndex} / ${total}`;
-  };
 
-  updateCounter();
-  const bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
-  carousel.addEventListener('slid.bs.carousel', updateCounter);
-});
+
+    document.getElementById('btn-elegi-destino').addEventListener('click', function() {
+    const ficha = document.getElementById('nuestras-propiedades');
+    if (ficha) {
+      ficha.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
