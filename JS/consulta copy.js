@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById("loader-overlay").style.display = "flex";
       //Esta URL se saca de la imlementación del App Script de Google
       fetch("https://script.google.com/macros/s/AKfycbydV_8lJDQJYFHQ8s93saUmtRiFnT_oY75NginyZOv8YOCVSwsyEWhjvvZ6mdyMo1N8oQ/exec?modo=datos")
-      
         .then(res => res.json())
         .then(precios => {
           info = precios[propiedad];
@@ -351,8 +350,8 @@ const cumpleMinimoEstadia = () => {
     const loaderText = loader.querySelector("p");
     loaderText.textContent = "Estamos procesando tu consulta...";
     loader.style.display = "flex";
-// Esto se sca de la implementacion en App Script para el envío de consultas
-    fetch("https://script.google.com/macros/s/AKfycbwKsUVwfzEsyD8UTKGYVTpXlySP22T11fhO_4c-w_LReNUNYJTImUzkg3RXb7Yaa_UWMg/exec", {
+
+    fetch("https://script.google.com/macros/s/AKfycbydWYJGj60EggNpLKvRelwzyd9YbHLgCrrfZT-TKl2zfTUX85TqHCNmhx1Q3rvjxrYQog/exec", {
       method: "POST",
       headers: {
         "Content-Type": "text/plain;charset=utf-8"
@@ -366,8 +365,7 @@ const cumpleMinimoEstadia = () => {
         huespedes,
         total,
         comentarios,
-        fechaHora,
-        imagen: obtenerImagen(propiedad, tipo) // ← función que devuelve la URL
+        fechaHora
       })
     })
     .then(res => res.text())
@@ -451,14 +449,8 @@ img.onerror = () => {
   img.alt = "Imagen no disponible";
 };
 
-function obtenerImagen(propiedad, tipo) {
-  const clave = `${tipo} ${propiedad}`;
-  const imagenes = {
-    "Casa Belen": "https://www.airesdemiramar.com.ar/img/belen/belen01.jpg",
-    "Casa Benteveo": "https://www.airesdemiramar.com.ar/img/benteveo/benteveo01.jpg",
-    "Departamento Brisa": "https://www.airesdemiramar.com.ar/img/brisa/brisa01.jpg",
-    "Departamento Coral": "https://www.airesdemiramar.com.ar/img/coral/coral01.jpg"
-  };
-  return imagenes[clave] || "";
-}
 
+ //"Casa Belen": "img/propiedades/belen/belen01.jpg",
+ // "Casa Benteveo": "img/propiedades/benteveo/benteveo01.jpg",
+ // "Departamento Brisa": "img/propiedades/brisa/brisa01.jpg",
+ // "Departamento Coral": "img/propiedades/coral/coral01.jpg"

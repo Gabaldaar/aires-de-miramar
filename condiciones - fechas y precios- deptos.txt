@@ -1,9 +1,0 @@
-Condiciones de reservas temporada baja: 
-
-Precio Base: Usd $50
-
-1 abril al 30 Noviembre: 
-Desc , de precio base : -10%
-Mínimo 3 noches 
-Excluye los dias festivos de fin de semana largos.
-
