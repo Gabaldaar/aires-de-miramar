@@ -1268,3 +1268,51 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+/*Seeción FAQs*/
+
+.text-success {
+  color: #015275 !important;
+  font-weight: 500;
+  font-size: 1.3rem;
+
+} 
+
+.accordion-button {
+  background-color: #f8f9fa;
+  color: #015275 !important; 
+  font-weight: 400;
+  border: none;
+  box-shadow: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e9f1f5;
+  color: #015275 !important;
+}
+
+.accordion-body {
+  background-color: #fff;
+  border-left: 3px solid #015275 !important;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #444;
+
+}
+
+.accordion-item {
+  border: none;
+  margin-bottom: 0.15rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+}
+section#faq {
+  margin-bottom: 3rem; /* o más si querés más aire */
+}
+.text-muted {
+  color: #015275 !important;
+  font-size: 0.9rem;
+} 
