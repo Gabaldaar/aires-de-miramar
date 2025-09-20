@@ -352,7 +352,9 @@ const cumpleMinimoEstadia = () => {
     loaderText.textContent = "Estamos procesando tu consulta...";
     loader.style.display = "flex";
 // Esto se sca de la implementacion en App Script para el envío de consultas
-    fetch("https://script.google.com/macros/s/AKfycbwKsUVwfzEsyD8UTKGYVTpXlySP22T11fhO_4c-w_LReNUNYJTImUzkg3RXb7Yaa_UWMg/exec", {
+//    fetch("https://script.google.com/macros/s/AKfycbxGCmYtM_zmtDAWQlbByLLpngZ50AQcxRb8oUA8KGNqSJq3JCUe1VQhje5uUFWuqDswQg/exec", {
+    fetch(`https://script.google.com/macros/s/AKfycbyA-nPhbXNZEcGzDz5ZC907si9qXOCQc69ymMjm__j1cBKYPwG2i6YXugdOGgbXWNIS/exec?nocache=${Date.now()}`, {
+  
       method: "POST",
       headers: {
         "Content-Type": "text/plain;charset=utf-8"
