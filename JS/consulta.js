@@ -353,7 +353,7 @@ const cumpleMinimoEstadia = () => {
     loader.style.display = "flex";
 // Esto se sca de la implementacion en App Script para el envío de consultas
 //    fetch("https://script.google.com/macros/s/AKfycbxGCmYtM_zmtDAWQlbByLLpngZ50AQcxRb8oUA8KGNqSJq3JCUe1VQhje5uUFWuqDswQg/exec", {
-    fetch(`https://script.google.com/macros/s/AKfycbyA-nPhbXNZEcGzDz5ZC907si9qXOCQc69ymMjm__j1cBKYPwG2i6YXugdOGgbXWNIS/exec?nocache=${Date.now()}`, {
+    fetch(`https://script.google.com/macros/s/AKfycbxjsDXt3zPP8xP-hG__8XiF7vpDWmjmE8wiikQjFi1SDt-EvGSGnmddgwUBani0awT0/exec?nocache=${Date.now()}`, {
   
       method: "POST",
       headers: {
