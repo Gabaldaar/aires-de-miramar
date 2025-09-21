@@ -500,6 +500,8 @@ body {
   color: #015275; /* Color primario del brandbook */
   font-weight: 450;         /* letra fina */
   font-size: 1rem;        /* tamaño base */
+  text-align: justify;
+  direction: ltr
   
 }
 
