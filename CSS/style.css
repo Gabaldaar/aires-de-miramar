@@ -326,6 +326,8 @@ body {
   font-size: 0.95em;
   padding: 0.5em;
   border-radius: 6px;
+  background-color: #f8f1e4;
+  border: 1px solid #ececec !important;
 }
 
 .flatpickr-day.today {
@@ -336,14 +338,17 @@ body {
 .flatpickr-day.selected {
   background-color: #198754;
   color: white;
+  border: 1px solid #218fe9 !important;
 }
 
 .flatpickr-day.flatpickr-disabled {
-  background-color: #f0f0f0 !important;
-  color: #888 !important;
+  background-color: #fadcdc !important;
+  /*color: #888 !important;*/
+  color: #f5a7a7 !important;
   text-decoration: line-through !important;
   opacity: 1 !important;
   cursor: not-allowed !important;
+  border: 1px solid #f5a7a7 !important;
 }
 
 

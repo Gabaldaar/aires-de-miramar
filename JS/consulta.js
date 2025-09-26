@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(() => {
           // ✅ Inicializar flatpickr con fechas y precios ya disponibles
           flatpickr(ingresoInput, {
+            locale: "es",
             dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
@@ -121,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
               if (selectedDates.length) {
                 egresoPicker.set("minDate", selectedDates[0]);
                 calcularTotal();
+                
               }
             },
             onDayCreate: function (dObj, dStr, fp, dayElem) {
@@ -129,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
 
           egresoPicker = flatpickr(egresoInput, {
+            locale: "es",
             dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
