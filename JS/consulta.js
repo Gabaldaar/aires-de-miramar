@@ -114,10 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
           // ✅ Inicializar flatpickr con fechas y precios ya disponibles
           flatpickr(ingresoInput, {
             locale: "es",
-            dateFormat: "d-m-Y",
+            dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
             disableMobile: true,
+
             onChange: function (selectedDates) {
               if (selectedDates.length) {
                 egresoPicker.set("minDate", selectedDates[0]);
@@ -132,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           egresoPicker = flatpickr(egresoInput, {
             locale: "es",
-            dateFormat: "d-m-Y",
+            dateFormat: "Y-m-d",
             minDate: "today",
             disable: fechasOcupadas,
             disableMobile: true,
@@ -257,6 +258,8 @@ const obtenerMinimoPorEstadia = (ingreso, egreso) => {
         campo.classList.remove("is-invalid");
         campo.classList.add("is-valid");
       }
+
+      
       if (error) error.textContent = "";
     };;
 
