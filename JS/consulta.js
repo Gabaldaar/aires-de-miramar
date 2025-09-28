@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // ✅ Inicializar flatpickr con fechas y precios ya disponibles
           flatpickr(ingresoInput, {
             locale: "es",
-            dateFormat: "Y-m-d",
+            dateFormat: "d-m-Y",
             minDate: "today",
             disable: fechasOcupadas,
             disableMobile: true,
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           egresoPicker = flatpickr(egresoInput, {
             locale: "es",
-            dateFormat: "Y-m-d",
+            dateFormat: "d-m-Y",
             minDate: "today",
             disable: fechasOcupadas,
             disableMobile: true,
