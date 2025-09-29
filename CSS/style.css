@@ -1319,6 +1319,6 @@ section#faq {
 }
 
 .carousel-indicators .active {
-  background-color: #015275;
+  background-color: #015275 !important;
   opacity: 1;
 }
