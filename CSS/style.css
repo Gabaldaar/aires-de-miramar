@@ -358,18 +358,6 @@ body {
   }
 }
 
-/*Carrousel
-
-.carousel {
-  position: relative;
-  min-height: 200px
-}/*
-/* CARROUSEL*/
-/*.carousel-item {
-  height: 400px; 
-  background-color: #f8f8f8;
-  text-align: center;
-}*/
 
 
 .prop-carousel-control-prev,
@@ -387,6 +375,7 @@ body {
   aspect-ratio: unset;
   overflow: hidden;
 }
+
 
 
 /* Fichas de propiedades */
@@ -959,27 +948,22 @@ body {
   z-index: 1;
 }
 
-.header-banner .carousel,
-.header-banner .carousel-inner,
-.header-banner .carousel-item {
-  height: 320px !important;
-  min-height: 180px;
+/* No forzamos height en el carrusel ni en los items */
+.header-banner .carousel-inner {
+  height: 320px;
 }
-
-.header-banner .carousel-item {
-  background: none !important;
-  text-align: center;
-  height: 320px !important;
-}
-
 
 .header-banner .banner-img {
-  height: 320px !important;
+  height: 100%;
   object-fit: cover;
   width: 100%;
   display: block;
-  background: none !important;
 }
+
+.carousel-item {
+  transition: transform 1s ease-in-out;
+}
+
 
 
 @media (max-width: 576px) {
@@ -1323,3 +1307,4 @@ section#faq {
   color: #015275 !important;
   font-size: 0.9rem;
 } 
+
