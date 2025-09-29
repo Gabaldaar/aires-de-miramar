@@ -1308,3 +1308,17 @@ section#faq {
   font-size: 0.9rem;
 } 
 
+.carousel-indicators button {
+  width: 20px;
+  height: 4px;
+  margin: 0px;
+  background-color: #999;
+  border: none;
+  border-radius: 1px;
+  opacity: 0.5;
+}
+
+.carousel-indicators .active {
+  background-color: #015275;
+  opacity: 1;
+}
