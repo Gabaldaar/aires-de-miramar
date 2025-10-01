@@ -940,23 +940,20 @@ body {
 
 
 /* Carrusel exclusivo del banner header */
-.header-banner {
-  position: relative;
-  width: 100%;
-  min-height: 320px;
-  overflow: hidden;
-  z-index: 1;
-}
+
 
 /* No forzamos height en el carrusel ni en los items */
-.header-banner .carousel-inner {
-  height: 320px;
+.header-banner {
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+  position: relative;
 }
 
 .header-banner .banner-img {
-  height: 100%;
-  object-fit: cover;
   width: 100%;
+  height: 40vh;
+  object-fit: cover;
   display: block;
 }
 
