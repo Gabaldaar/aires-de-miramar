@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const totalContainer = document.getElementById("total");
 // IDs de calendarios de Google para cada propiedad
   const calendarIds = {
-    Brisa: "e50a4bf3b263eb7955e81ba93a8ca17795da344c6c59587afbcf17f36eeeb64a@group.calendar.google.com",
-    Coral: "4cd0e35e1a0b2c09f2bb18ac4caf0e613ea528dc1d899dfce6018a3b3bb1b5e4@group.calendar.google.com",
-    Belen: "30ed9d4620e85a878a620f239e818bde2af8dc5f1d2ddc19fbf4241c82aac070@group.calendar.google.com",
-    Benteveo: "h3sjromhjot8nmajtp54ubuchajtnet5@import.calendar.google.com"
-    //nteveo: "d7d12046e12d045e55c41b218b0b67261b125711925bc5d8177b00752bc73d11@group.calendar.google.com"
+    Brisa: "38vu8u61ln4dknvpspaij069f1o2npkt@import.calendar.google.com",
+    Coral: "lf7ghn5h1i1c9ke1916l0hr2shnuia06@import.calendar.google.com",
+    Belen: "mnp9lkhplh14urpk66o3fabtodqqerla@import.calendar.google.com",
+    Benteveo: "3r59r7igqcr53vlbdcl49qppgh186717@import.calendar.google.com"
+  
   };
 
   const apiKey = "AIzaSyDUkc_gvy-Z5WrXZLXeaUkkiKGkdFN0mNg";
